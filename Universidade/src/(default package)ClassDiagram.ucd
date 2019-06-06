@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="(default package)ClassDiagram" foregroundRGB="255,255,255" id="{UMLID=_po-OIFSgEd6LZpaWKMHs6g,JavaID=}" metadata="uml2-1.0" initialized="true" tag="1000" key="323030373036323920556E697665727369646164652F4C756369616E61">
+  <children xsi:type="editmodel:PackageEditModel" name="dominio" location="40,270" size="1207,415" id="{UMLID=_0jCH8FSgEd6LZpaWKMHs6g,JavaID=dominio}">
+    <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@children.3/@sourceConnections.0" name="Pessoa" location="534,35" size="128,158" stereotype="" id="{UMLID=_2WWfsFSgEd6LZpaWKMHs6g,JavaID=dominio/Pessoa}" runTimeClassModel="nomePessoa,setNumCpf(I),setNomePessoa,Pessoa(),numCpf,getNumCpf(),getNomePessoa">
+      <children xsi:type="editmodel:CompartmentEditModel" size="79,32">
+        <children xsi:type="editmodel:AttributeEditModel" name="nomePessoa" id="{UMLID=_9QSL8FSgEd6LZpaWKMHs6g,JavaID=dominio/Pessoa#nomePessoa}"/>
+        <children xsi:type="editmodel:AttributeEditModel" name="numCpf" id="{UMLID=_9Qb881SgEd6LZpaWKMHs6g,JavaID=dominio/Pessoa#numCpf}"/>
+      </children>
+      <children xsi:type="editmodel:CompartmentEditModel" size="108,80">
+        <children xsi:type="editmodel:MethodEditModel" name="Pessoa" id="{UMLID=_9Qu341SgEd6LZpaWKMHs6g,JavaID=dominio/Pessoa#Pessoa()}"/>
+        <children xsi:type="editmodel:MethodEditModel" name="getNomePessoa" id="{UMLID=_9Qu34FSgEd6LZpaWKMHs6g,JavaID=dominio/Pessoa#getNomePessoa}"/>
+        <children xsi:type="editmodel:MethodEditModel" name="setNomePessoa" id="{UMLID=_9Qlt9FSgEd6LZpaWKMHs6g,JavaID=dominio/Pessoa#setNomePessoa}"/>
+        <children xsi:type="editmodel:MethodEditModel" name="getNumCpf" id="{UMLID=_9Qlt8VSgEd6LZpaWKMHs6g,JavaID=dominio/Pessoa#getNumCpf()}"/>
+        <children xsi:type="editmodel:MethodEditModel" name="setNumCpf" id="{UMLID=_9Qb89FSgEd6LZpaWKMHs6g,JavaID=dominio/Pessoa#setNumCpf(I)}"/>
+      </children>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@children.2/@sourceConnections.0" name="Curso" location="50,50" size="121,158" stereotype="" id="{UMLID=_9TROgFSgEd6LZpaWKMHs6g,JavaID=dominio/Curso}" runTimeClassModel="getNomeCurso,setNomeCurso,mDisciplina,getDisciplina(),Curso(),setDisciplina(Ldominio.Disciplina;),nomeCurso">
+      <children xsi:type="editmodel:CompartmentEditModel" size="72,32">
+        <children xsi:type="editmodel:AttributeEditModel" name="nomeCurso" id="{UMLID=_9TaYclSgEd6LZpaWKMHs6g,JavaID=dominio/Curso#nomeCurso}"/>
+        <children xsi:type="editmodel:AttributeEditModel" name="mDisciplina" id="{UMLID=_9TaYcFSgEd6LZpaWKMHs6g,JavaID=dominio/Disciplina@mDisciplina+dominio/Curso@ownedEnd|dominio/Disciplina#mDisciplina}"/>
+      </children>
+      <children xsi:type="editmodel:CompartmentEditModel" size="101,80">
+        <children xsi:type="editmodel:MethodEditModel" name="Curso" id="{UMLID=_9TaYeVSgEd6LZpaWKMHs6g,JavaID=dominio/Curso#Curso()}"/>
+        <children xsi:type="editmodel:MethodEditModel" name="getDisciplina" id="{UMLID=_9TaYelSgEd6LZpaWKMHs6g,JavaID=dominio/Curso#getDisciplina()}"/>
+        <children xsi:type="editmodel:MethodEditModel" name="setDisciplina" id="{UMLID=_9TaYdlSgEd6LZpaWKMHs6g,JavaID=dominio/Curso#setDisciplina(Ldominio.Disciplina;)}"/>
+        <children xsi:type="editmodel:MethodEditModel" name="getNomeCurso" id="{UMLID=_9TaYc1SgEd6LZpaWKMHs6g,JavaID=dominio/Curso#getNomeCurso}"/>
+        <children xsi:type="editmodel:MethodEditModel" name="setNomeCurso" id="{UMLID=_9TaYfVSgEd6LZpaWKMHs6g,JavaID=dominio/Curso#setNomeCurso}"/>
+      </children>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@children.2/@sourceConnections.1" name="Disciplina" location="320,76" size="129,334" stereotype="" id="{UMLID=_9TaYcVSgEd6LZpaWKMHs6g,JavaID=dominio/Disciplina}" runTimeClassModel="getNumCreditos(),setNomeDisc,getCargaHoraria(),numCreditos,setDisciplina(Ldominio.Disciplina;),setNumCreditos(I),getPeriodo(),nomeDisc,setProfessor(Ldominio.Professor;),getProfessor(),mDisciplina,getNomeDisc,getDisciplina(),cargaHoraria,setPeriodo(I),Disciplina(),setCargaHoraria(D),periodo">
+      <children xsi:type="editmodel:CompartmentEditModel" size="80,80">
+        <children xsi:type="editmodel:AttributeEditModel" name="nomeDisc" id="{UMLID=_9UKmZFSgEd6LZpaWKMHs6g,JavaID=dominio/Disciplina#nomeDisc}"/>
+        <children xsi:type="editmodel:AttributeEditModel" name="cargaHoraria" id="{UMLID=_9UKmYlSgEd6LZpaWKMHs6g,JavaID=dominio/Disciplina#cargaHoraria}"/>
+        <children xsi:type="editmodel:AttributeEditModel" name="numCreditos" id="{UMLID=_9UKmYVSgEd6LZpaWKMHs6g,JavaID=dominio/Disciplina#numCreditos}"/>
+        <children xsi:type="editmodel:AttributeEditModel" name="periodo" id="{UMLID=_9UKmY1SgEd6LZpaWKMHs6g,JavaID=dominio/Disciplina#periodo}"/>
+        <children xsi:type="editmodel:AttributeEditModel" name="mDisciplina" id="{UMLID=_9UKmYFSgEd6LZpaWKMHs6g,JavaID=dominio/Disciplina@mDisciplina+dominio/Disciplina@ownedEnd|dominio/Disciplina#mDisciplina}"/>
+      </children>
+      <children xsi:type="editmodel:CompartmentEditModel" size="109,208">
+        <children xsi:type="editmodel:MethodEditModel" name="Disciplina" id="{UMLID=_9UTwYlSgEd6LZpaWKMHs6g,JavaID=dominio/Disciplina#Disciplina()}"/>
+        <children xsi:type="editmodel:MethodEditModel" name="getCargaHoraria" id="{UMLID=_9UTwUFSgEd6LZpaWKMHs6g,JavaID=dominio/Disciplina#getCargaHoraria()}"/>
+        <children xsi:type="editmodel:MethodEditModel" name="setCargaHoraria" id="{UMLID=_9UKma1SgEd6LZpaWKMHs6g,JavaID=dominio/Disciplina#setCargaHoraria(D)}"/>
+        <children xsi:type="editmodel:MethodEditModel" name="getDisciplina" id="{UMLID=_9UKmZVSgEd6LZpaWKMHs6g,JavaID=dominio/Disciplina#getDisciplina()}"/>
+        <children xsi:type="editmodel:MethodEditModel" name="setDisciplina" id="{UMLID=_9UKmblSgEd6LZpaWKMHs6g,JavaID=dominio/Disciplina#setDisciplina(Ldominio.Disciplina;)}"/>
+        <children xsi:type="editmodel:MethodEditModel" name="getNomeDisc" id="{UMLID=_9UTwX1SgEd6LZpaWKMHs6g,JavaID=dominio/Disciplina#getNomeDisc}"/>
+        <children xsi:type="editmodel:MethodEditModel" name="setNomeDisc" id="{UMLID=_9UTwWVSgEd6LZpaWKMHs6g,JavaID=dominio/Disciplina#setNomeDisc}"/>
+        <children xsi:type="editmodel:MethodEditModel" name="getNumCreditos" id="{UMLID=_9UTwXFSgEd6LZpaWKMHs6g,JavaID=dominio/Disciplina#getNumCreditos()}"/>
+        <children xsi:type="editmodel:MethodEditModel" name="setNumCreditos" id="{UMLID=_9UKmaFSgEd6LZpaWKMHs6g,JavaID=dominio/Disciplina#setNumCreditos(I)}"/>
+        <children xsi:type="editmodel:MethodEditModel" name="getPeriodo" id="{UMLID=_9UTwU1SgEd6LZpaWKMHs6g,JavaID=dominio/Disciplina#getPeriodo()}"/>
+        <children xsi:type="editmodel:MethodEditModel" name="setPeriodo" id="{UMLID=_9UTwVlSgEd6LZpaWKMHs6g,JavaID=dominio/Disciplina#setPeriodo(I)}"/>
+        <children xsi:type="editmodel:MethodEditModel" name="getProfessor" id="{UMLID=_Qg2uqlSqEd6LZpaWKMHs6g,JavaID=dominio/Disciplina#getProfessor()}"/>
+        <children xsi:type="editmodel:MethodEditModel" name="setProfessor" id="{UMLID=_Qg2urVSqEd6LZpaWKMHs6g,JavaID=dominio/Disciplina#setProfessor(Ldominio.Professor;)}"/>
+      </children>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="{UMLID=_9T3EYFSgEd6LZpaWKMHs6g,JavaID=dominio/Disciplina@mDisciplina+dominio/Curso@ownedEnd}" source="//@children.0/@children.2" target="//@children.0/@children.1" targetEnd="//@children.0/@children.2/@sourceConnections.0/@children.2" label="//@children.0/@children.2/@sourceConnections.0/@children.0" sourceEnd="//@children.0/@children.2/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+        <children xsi:type="editmodel:WireLabelEditModel" location="291,398" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+        <children xsi:type="editmodel:AssociationEndEditModel" name="mDisciplina" location="0,66" id="{UMLID=_9TaYcFSgEd6LZpaWKMHs6g,JavaID=dominio/Disciplina@mDisciplina+dominio/Curso@ownedEnd|dominio/Disciplina#mDisciplina}" attachSource="true" multiplicityLabel="//@children.0/@children.2/@sourceConnections.0/@children.1/@children.1" roleLabel="//@children.0/@children.2/@sourceConnections.0/@children.1/@children.0" navigable="true" flags="2">
+          <children xsi:type="editmodel:LabelEditModel" name="- mDisciplina" location="293,391" size="60,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+          <children xsi:type="editmodel:LabelEditModel" name="1" location="347,419" size="6,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" name="ownedEnd" location="121,92" id="{UMLID=_9T3EYVSgEd6LZpaWKMHs6g,JavaID=dominio/Disciplina@mDisciplina+dominio/Curso@ownedEnd|dominio/Curso#ownedEnd}" roleLabel="//@children.0/@children.2/@sourceConnections.0/@children.2/@children.0" flags="1">
+          <children xsi:type="editmodel:LabelEditModel" name="+ ownedEnd" location="218,391" size="61,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="{UMLID=_9UwcQFSgEd6LZpaWKMHs6g,JavaID=dominio/Disciplina@mDisciplina+dominio/Disciplina@ownedEnd}" source="//@children.0/@children.2" target="//@children.0/@children.2" targetEnd="//@children.0/@children.2/@sourceConnections.1/@children.2" label="//@children.0/@children.2/@sourceConnections.1/@children.0" sourceEnd="//@children.0/@children.2/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan">
+        <children xsi:type="editmodel:WireLabelEditModel" location="320,338" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+        <children xsi:type="editmodel:AssociationEndEditModel" name="mDisciplina" location="0,11" id="{UMLID=_9UKmYFSgEd6LZpaWKMHs6g,JavaID=dominio/Disciplina@mDisciplina+dominio/Disciplina@ownedEnd|dominio/Disciplina#mDisciplina}" anchorKind="FixedAtEdge" attachSource="true" multiplicityLabel="//@children.0/@children.2/@sourceConnections.1/@children.1/@children.1" roleLabel="//@children.0/@children.2/@sourceConnections.1/@children.1/@children.0" navigable="true" flags="2">
+          <children xsi:type="editmodel:LabelEditModel" name="- mDisciplina" location="293,364" size="60,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+          <children xsi:type="editmodel:LabelEditModel" name="1" location="347,336" size="6,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" name="ownedEnd" location="10,0" id="{UMLID=_9UwcQVSgEd6LZpaWKMHs6g,JavaID=dominio/Disciplina@mDisciplina+dominio/Disciplina@ownedEnd|dominio/Disciplina#ownedEnd}" anchorKind="FixedAtEdge" roleLabel="//@children.0/@children.2/@sourceConnections.1/@children.2/@children.0" flags="1">
+          <children xsi:type="editmodel:LabelEditModel" name="+ ownedEnd" location="377,325" size="61,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" name="Aluno" location="469,237" size="127,158" stereotype="" id="{UMLID=_2VKM4FSgEd6LZpaWKMHs6g,JavaID=dominio/Aluno}" runTimeClassModel="Aluno(),getMatricula(),getAnoIngresso(),anoIngresso,setAnoIngresso(I),setMatricula(I),matricula">
+      <children xsi:type="editmodel:CompartmentEditModel" size="77,32"/>
+      <children xsi:type="editmodel:CompartmentEditModel" size="107,80"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:GeneralizationEditModel" targetConnections="//@children.0/@children.4/@children.1/@sourceConnections.0" size="2,1" autoLocated="true" id="{UMLID=_2WWfsVSgEd6LZpaWKMHs6g,JavaID=dominio/Pessoa&lt;-dominio/Aluno}" source="//@children.0/@children.3" target="//@children.0/@children.0" targetEnd="//@children.0/@children.3/@sourceConnections.0/@children.1" sourceEnd="//@children.0/@children.3/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="63,0" anchorKind="FixedAtEdge" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="64,158" anchorKind="FixedAtEdge"/>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true"/>
+    </children>
+    <children xsi:type="editmodel:GroupEditModel" location="741,38" size="446,261">
+      <children xsi:type="editmodel:ClassEditModel" name="Departamento" size="126,254" stereotype="" id="{UMLID=_9RoPwVSgEd6LZpaWKMHs6g,JavaID=dominio/Departamento}" runTimeClassModel="getCodigoDepto(),codigoDepto,getSiglaDepto,Departamento(),mProfessor,setProfessor(Ldominio.Professor;),siglaDepto,nomeDepto,getProfessor(),setNomeDepto,setCodigoDepto(I),setSiglaDepto,getNomeDepto">
+        <children xsi:type="editmodel:CompartmentEditModel" size="77,64">
+          <children xsi:type="editmodel:AttributeEditModel" name="nomeDepto" id="{UMLID=_9R7KsFSgEd6LZpaWKMHs6g,JavaID=dominio/Departamento#nomeDepto}"/>
+          <children xsi:type="editmodel:AttributeEditModel" name="siglaDepto" id="{UMLID=_9R7KuFSgEd6LZpaWKMHs6g,JavaID=dominio/Departamento#siglaDepto}"/>
+          <children xsi:type="editmodel:AttributeEditModel" name="mProfessor" id="{UMLID=_9R7KslSgEd6LZpaWKMHs6g,JavaID=dominio/Professor@mProfessor+dominio/Departamento@ownedEnd|dominio/Professor#mProfessor}"/>
+          <children xsi:type="editmodel:AttributeEditModel" name="codigoDepto" id="{UMLID=_9R7KsVSgEd6LZpaWKMHs6g,JavaID=dominio/Departamento#codigoDepto}"/>
+        </children>
+        <children xsi:type="editmodel:CompartmentEditModel" size="106,144">
+          <children xsi:type="editmodel:MethodEditModel" name="Departamento" id="{UMLID=_9R7KuVSgEd6LZpaWKMHs6g,JavaID=dominio/Departamento#Departamento()}"/>
+          <children xsi:type="editmodel:MethodEditModel" name="getProfessor" id="{UMLID=_9R7KvVSgEd6LZpaWKMHs6g,JavaID=dominio/Departamento#getProfessor()}"/>
+          <children xsi:type="editmodel:MethodEditModel" name="setProfessor" id="{UMLID=_9SE7uFSgEd6LZpaWKMHs6g,JavaID=dominio/Departamento#setProfessor(Ldominio.Professor;)}"/>
+          <children xsi:type="editmodel:MethodEditModel" name="getNomeDepto" id="{UMLID=_9SE7wVSgEd6LZpaWKMHs6g,JavaID=dominio/Departamento#getNomeDepto}"/>
+          <children xsi:type="editmodel:MethodEditModel" name="setNomeDepto" id="{UMLID=_9R7KulSgEd6LZpaWKMHs6g,JavaID=dominio/Departamento#setNomeDepto}"/>
+          <children xsi:type="editmodel:MethodEditModel" name="getSiglaDepto" id="{UMLID=_9SE7u1SgEd6LZpaWKMHs6g,JavaID=dominio/Departamento#getSiglaDepto}"/>
+          <children xsi:type="editmodel:MethodEditModel" name="setSiglaDepto" id="{UMLID=_9SE7tVSgEd6LZpaWKMHs6g,JavaID=dominio/Departamento#setSiglaDepto}"/>
+          <children xsi:type="editmodel:MethodEditModel" name="getCodigoDepto" id="{UMLID=_9SE7slSgEd6LZpaWKMHs6g,JavaID=dominio/Departamento#getCodigoDepto()}"/>
+          <children xsi:type="editmodel:MethodEditModel" name="setCodigoDepto" id="{UMLID=_9SE7vlSgEd6LZpaWKMHs6g,JavaID=dominio/Departamento#setCodigoDepto(I)}"/>
+        </children>
+        <children xsi:type="editmodel:CompartmentEditModel"/>
+        <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="{UMLID=_9S0ikFSgEd6LZpaWKMHs6g,JavaID=dominio/Professor@mProfessor+dominio/Departamento@ownedEnd}" source="//@children.0/@children.4/@children.0" target="//@children.0/@children.4/@children.1" targetEnd="//@children.0/@children.4/@children.0/@sourceConnections.0/@children.2" label="//@children.0/@children.4/@children.0/@sourceConnections.0/@children.0" sourceEnd="//@children.0/@children.4/@children.0/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+          <children xsi:type="editmodel:WireLabelEditModel" location="1015,496" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+          <children xsi:type="editmodel:AssociationEndEditModel" name="ownedEnd" location="126,202" id="{UMLID=_9S0ikVSgEd6LZpaWKMHs6g,JavaID=dominio/Professor@mProfessor+dominio/Departamento@ownedEnd|dominio/Departamento#ownedEnd}" attachSource="true" roleLabel="//@children.0/@children.4/@children.0/@sourceConnections.0/@children.1/@children.0" flags="1">
+            <children xsi:type="editmodel:LabelEditModel" name="+ ownedEnd" location="914,489" size="61,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+          </children>
+          <children xsi:type="editmodel:AssociationEndEditModel" name="mProfessor" location="0,51" id="{UMLID=_9R7KslSgEd6LZpaWKMHs6g,JavaID=dominio/Professor@mProfessor+dominio/Departamento@ownedEnd|dominio/Professor#mProfessor}" multiplicityLabel="//@children.0/@children.4/@children.0/@sourceConnections.0/@children.2/@children.1" roleLabel="//@children.0/@children.4/@children.0/@sourceConnections.0/@children.2/@children.0" navigable="true" flags="2">
+            <children xsi:type="editmodel:LabelEditModel" name="- mProfessor" location="1044,489" size="63,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+            <children xsi:type="editmodel:LabelEditModel" name="1" location="1101,517" size="6,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          </children>
+        </sourceConnections>
+        <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true"/>
+      </children>
+      <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@children.4/@children.0/@sourceConnections.0" name="Professor" location="333,151" size="113,110" stereotype="" id="{UMLID=_9QJCAFSgEd6LZpaWKMHs6g,JavaID=dominio/Professor}" packageIndication="1" runTimeClassModel="formacao,setFormacao(Ljava.lang.String;),Professor(),getFormacao()">
+        <children xsi:type="editmodel:CompartmentEditModel" size="63,16">
+          <children xsi:type="editmodel:AttributeEditModel" name="formacao" id="{UMLID=_9RLj0VSgEd6LZpaWKMHs6g,JavaID=dominio/Professor#formacao}"/>
+        </children>
+        <children xsi:type="editmodel:CompartmentEditModel" size="93,48">
+          <children xsi:type="editmodel:MethodEditModel" name="Professor" id="{UMLID=_9RLj0lSgEd6LZpaWKMHs6g,JavaID=dominio/Professor#Professor()}"/>
+          <children xsi:type="editmodel:MethodEditModel" name="getFormacao" id="{UMLID=_9RLj01SgEd6LZpaWKMHs6g,JavaID=dominio/Professor#getFormacao()}"/>
+          <children xsi:type="editmodel:MethodEditModel" name="setFormacao" id="{UMLID=_9RLj1lSgEd6LZpaWKMHs6g,JavaID=dominio/Professor#setFormacao(Ljava.lang.String;)}"/>
+        </children>
+        <children xsi:type="editmodel:CompartmentEditModel"/>
+        <sourceConnections xsi:type="editmodel:GeneralizationEditModel" size="2,1" autoLocated="true" id="{UMLID=_9RLj0FSgEd6LZpaWKMHs6g,JavaID=dominio/Pessoa&lt;-dominio/Professor}" source="//@children.0/@children.4/@children.1" target="//@children.0/@children.3/@sourceConnections.0" targetEnd="//@children.0/@children.4/@children.1/@sourceConnections.0/@children.1" sourceEnd="//@children.0/@children.4/@children.1/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+          <children xsi:type="editmodel:AssociationEndEditModel" location="56,0" anchorKind="FixedAtEdge" attachSource="true"/>
+          <children xsi:type="editmodel:AssociationEndEditModel"/>
+        </sourceConnections>
+        <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="1" showMethods="true" showAttributes="true"/>
+      </children>
+    </children>
+    <packagePreferences xsi:type="editmodel:UMLClassDiagramPackagePreference" showStereotype="true"/>
+  </children>
+  <children xsi:type="editmodel:PackageEditModel" name="servicosTecnicos" location="70,839" size="750,190" id="{UMLID=_Fo-8QFShEd6LZpaWKMHs6g,JavaID=servicosTecnicos}">
+    <children xsi:type="editmodel:ClassEditModel" name="CursoDAO" location="618,50" size="102,94" stereotype="" id="{UMLID=_HyXDkFShEd6LZpaWKMHs6g,JavaID=servicosTecnicos/CursoDAO}" runTimeClassModel="con,getCursos,CursoDAO()">
+      <children xsi:type="editmodel:CompartmentEditModel" size="35,16">
+        <children xsi:type="editmodel:AttributeEditModel" name="con" id="{UMLID=_Hy85cFShEd6LZpaWKMHs6g,JavaID=servicosTecnicos/Conexao@con+servicosTecnicos/CursoDAO@ownedEnd|servicosTecnicos/Conexao#con}"/>
+      </children>
+      <children xsi:type="editmodel:CompartmentEditModel" size="82,32">
+        <children xsi:type="editmodel:MethodEditModel" name="CursoDAO" id="{UMLID=_HzGqcVShEd6LZpaWKMHs6g,JavaID=servicosTecnicos/CursoDAO#CursoDAO()}"/>
+        <children xsi:type="editmodel:MethodEditModel" name="getCursos" id="{UMLID=_Hy85clShEd6LZpaWKMHs6g,JavaID=servicosTecnicos/CursoDAO#getCursos}"/>
+      </children>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" name="DepartamentoDAO" location="50,50" size="158,126" stereotype="" id="{UMLID=_H05aMFShEd6LZpaWKMHs6g,JavaID=servicosTecnicos/DepartamentoDAO}" runTimeClassModel="con,getDepartamentos,DepartamentoDAO(),inserirDepartamento(Ldominio.Departamento;),consultaDepartamento">
+      <children xsi:type="editmodel:CompartmentEditModel" size="35,16">
+        <children xsi:type="editmodel:AttributeEditModel" name="con" id="{UMLID=_H05aMVShEd6LZpaWKMHs6g,JavaID=servicosTecnicos/Conexao@con+servicosTecnicos/DepartamentoDAO@ownedEnd|servicosTecnicos/Conexao#con}"/>
+      </children>
+      <children xsi:type="editmodel:CompartmentEditModel" size="138,64">
+        <children xsi:type="editmodel:MethodEditModel" name="DepartamentoDAO" id="{UMLID=_H05aMlShEd6LZpaWKMHs6g,JavaID=servicosTecnicos/DepartamentoDAO#DepartamentoDAO()}"/>
+        <children xsi:type="editmodel:MethodEditModel" name="consultaDepartamento" id="{UMLID=_H1CkJ1ShEd6LZpaWKMHs6g,JavaID=servicosTecnicos/DepartamentoDAO#consultaDepartamento}"/>
+        <children xsi:type="editmodel:MethodEditModel" name="getDepartamentos" id="{UMLID=_H05aM1ShEd6LZpaWKMHs6g,JavaID=servicosTecnicos/DepartamentoDAO#getDepartamentos}"/>
+        <children xsi:type="editmodel:MethodEditModel" name="inserirDepartamento" id="{UMLID=_H1CkIlShEd6LZpaWKMHs6g,JavaID=servicosTecnicos/DepartamentoDAO#inserirDepartamento(Ldominio.Departamento;)}"/>
+      </children>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" name="ProfessorDAO" location="429,50" size="139,94" stereotype="" id="{UMLID=_H1CkLFShEd6LZpaWKMHs6g,JavaID=servicosTecnicos/ProfessorDAO}" runTimeClassModel="con,ProfessorDAO(),consultaProfDepto">
+      <children xsi:type="editmodel:CompartmentEditModel" size="35,16">
+        <children xsi:type="editmodel:AttributeEditModel" name="con" id="{UMLID=_H21T4FShEd6LZpaWKMHs6g,JavaID=servicosTecnicos/Conexao@con+servicosTecnicos/ProfessorDAO@ownedEnd|servicosTecnicos/Conexao#con}"/>
+      </children>
+      <children xsi:type="editmodel:CompartmentEditModel" size="119,32">
+        <children xsi:type="editmodel:MethodEditModel" name="ProfessorDAO" id="{UMLID=_H21T4VShEd6LZpaWKMHs6g,JavaID=servicosTecnicos/ProfessorDAO#ProfessorDAO()}"/>
+        <children xsi:type="editmodel:MethodEditModel" name="consultaProfDepto" id="{UMLID=_H21T4lShEd6LZpaWKMHs6g,JavaID=servicosTecnicos/ProfessorDAO#consultaProfDepto}"/>
+      </children>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" name="Conexao" location="258,50" size="121,110" stereotype="" id="{UMLID=_Hy85cVShEd6LZpaWKMHs6g,JavaID=servicosTecnicos/Conexao}" runTimeClassModel="con,Conexao(),fechaConexao(),getCon">
+      <children xsi:type="editmodel:CompartmentEditModel" size="35,16">
+        <children xsi:type="editmodel:AttributeEditModel" name="con" id="{UMLID=_H4UhoFShEd6LZpaWKMHs6g,JavaID=servicosTecnicos/Conexao#con}"/>
+      </children>
+      <children xsi:type="editmodel:CompartmentEditModel" size="101,48">
+        <children xsi:type="editmodel:MethodEditModel" name="Conexao" id="{UMLID=_H4drkFShEd6LZpaWKMHs6g,JavaID=servicosTecnicos/Conexao#Conexao()}"/>
+        <children xsi:type="editmodel:MethodEditModel" name="fechaConexao" id="{UMLID=_H4UhoVShEd6LZpaWKMHs6g,JavaID=servicosTecnicos/Conexao#fechaConexao()}"/>
+        <children xsi:type="editmodel:MethodEditModel" name="getCon" id="{UMLID=_H4UholShEd6LZpaWKMHs6g,JavaID=servicosTecnicos/Conexao#getCon}"/>
+      </children>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showMethods="true" showAttributes="true"/>
+    </children>
+    <packagePreferences xsi:type="editmodel:UMLClassDiagramPackagePreference" showStereotype="true"/>
+  </children>
+  <children xsi:type="editmodel:PackageEditModel" name="apresentacao" location="40,20" size="422,224" id="{UMLID=_Jwj1oFShEd6LZpaWKMHs6g,JavaID=apresentacao}">
+    <children xsi:type="editmodel:ClassEditModel" name="Principal" location="50,50" size="77,26" stereotype="" id="{UMLID=_OzcgsFShEd6LZpaWKMHs6g,JavaID=apresentacao/Principal}" runTimeClassModel="Principal(),jTextField6,jLabel21,jTextField5,jLabel20,jTextField4,jLabel23,jTextField3,jLabel22,jLabel25,jTextField9,jTextField8,jLabel27,jLabel26,jTextField7,jMenuItem1ActionPerformed,jButton1,jButton10,jButton3,jPanel1,jButton2,jTextField1,jTextField2,jButton11,jButton12,jButton9,jPanel6,jButton8,jPanel9,jPanel3,jButton5,jPanel2,jButton4,jPanel5,jButton7,jPanel4,jButton6,jPanel13,jScrollPane1,jPanel11,jButton18ActionPerformed,jScrollPane3,jLabel12,jLabel11,jLabel10,jButton18,jButton20ActionPerformed,jButton19,jLabel14,jLabel13,jLabel19,jButton20,jLabel18,initComponents(),jButton19ActionPerformed,jLabel5,atualizaListaDeptos(),jList1,jLabel4,jLabel3,jTextField10,jLabel2,jMenuBar1,jTextField11,jLabel9,jLabel8,jTextField13,jMenu1,jLabel7,jMenuItem5,jMenu2,jLabel6,jMenuItem4,jTextField15,jComboBox7,jMenuItem3,jTextField16,jComboBox8,jMenuItem2,jTextField17,jComboBox9,jMenuItem1,jLabel1,main,atualizaDadosDepartamento(),desabilitaInclusao(),jComboBox1,jComboBox4,jComboBox3,jComboBox6,jComboBox5,jTable2,jTabbedPane2,jComboBox6ItemStateChanged,jTabbedPane1">
+      <children xsi:type="editmodel:CompartmentEditModel" size="85,1344"/>
+      <children xsi:type="editmodel:CompartmentEditModel" size="175,176"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showLiterals="true"/>
+    </children>
+    <packagePreferences xsi:type="editmodel:UMLClassDiagramPackagePreference" showStereotype="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" properties="wireOptions=1" autoName="false"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="10,10" gridOrigin="0,0" rulerUnit="pixel">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showInterfaceStereotype="true" showMethods="true" showAttributes="true" showLiterlas="true" showInnerEntity="true"/>
+</editmodel:ClassDiagramEditModel>
