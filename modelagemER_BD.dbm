@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.1-beta" last-position="163,76" last-zoom="1"
+	 default-schema="public" default-owner="postgres">
+<database name="new_database">
+</database>
+
+<schema name="public" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<table name="livro">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="560" y="360"/>
+	<column name="id_livro" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="nu_edicao">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="nm_title">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="nm_genero">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="livro_pk" type="pk-constr" table="public.livro">
+		<columns names="id_livro" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="id_editora_editora" index="4"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="editora_fk" index="1"/>
+	</customidxs>
+</table>
+
+<table name="autor">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="300" y="100"/>
+	<column name="id_autor" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="nm_autor">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="nm_citacao">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="autor_pk" type="pk-constr" table="public.autor">
+		<columns names="id_autor" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="editora">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="840" y="100"/>
+	<column name="id_editora" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="nm_editora">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="logradouro">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="estado">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="cidade">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="editora_pk" type="pk-constr" table="public.editora">
+		<columns names="id_editora" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="usuario">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="900" y="640"/>
+	<column name="id_usuario" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="telefone">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="nu_idade">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="status">
+		<type name="boolean" length="0"/>
+	</column>
+	<column name="nm_usuario">
+		<type name="varchar" length="0"/>
+	</column>
+	<constraint name="usuario_pk" type="pk-constr" table="public.usuario">
+		<columns names="id_usuario" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="exemplar">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="280" y="640"/>
+	<column name="id_exemplar" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="nu_quantidade">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="exemplar_pk" type="pk-constr" table="public.exemplar">
+		<columns names="id_exemplar" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="id_livro_livro" index="2"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="livro_fk" index="1"/>
+	</customidxs>
+</table>
+
+<relationship name="autoria" type="relnn"
+	 src-col-pattern="{sc}_{st}" dst-col-pattern="{sc}_{dt}"
+	 pk-pattern="{gt}_pk" uq-pattern="{gt}_uq"
+	 src-fk-pattern="{st}_fk" dst-fk-pattern="{dt}_fk"
+	 pk-col-pattern="id"
+	 custom-color="#bd7e2d"
+	 src-table="public.autor"
+	 dst-table="public.livro"
+	 src-required="false" dst-required="false"
+	 table-name="autoria">
+	<label ref-type="name-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
+
+<relationship name="produz" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#a40000"
+	 src-table="public.editora"
+	 dst-table="public.livro"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="possui" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#151725"
+	 src-table="public.livro"
+	 dst-table="public.exemplar"
+	 src-required="true" dst-required="false"
+	 identifier="true"
+/>
+
+<relationship name="aluguel" type="relnn"
+	 src-col-pattern="{sc}_{st}" dst-col-pattern="{sc}_{dt}"
+	 pk-pattern="{gt}_pk" uq-pattern="{gt}_uq"
+	 src-fk-pattern="{st}_fk" dst-fk-pattern="{dt}_fk"
+	 pk-col-pattern="id"
+	 custom-color="#2fe7d7"
+	 src-table="public.usuario"
+	 dst-table="public.exemplar"
+	 src-required="false" dst-required="false"
+	 table-name="aluguel">
+	<column name="dt_aluguel" not-null="true" default-value="CURRENT_TIMESTAMP">
+		<type name="date" length="0"/>
+	</column>
+	<column name="dt_entrega">
+		<type name="date" length="0"/>
+	</column>
+	<special-pk-cols indexes="0"/>
+</relationship>
+
+</dbmodel>
