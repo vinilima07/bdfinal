@@ -12,18 +12,17 @@
 -- CREATE DATABASE new_database
 -- ;
 -- -- ddl-end --
--- 
+--
 
 -- object: public.livro | type: TABLE --
 -- DROP TABLE IF EXISTS public.livro CASCADE;
 CREATE TABLE public.livro(
 	id_livro serial NOT NULL,
 	nu_edicao smallint,
-	nm_title varchar,
+	nm_titulo varchar,
 	nm_genero varchar,
 	id_editora integer,
 	CONSTRAINT livro_pk PRIMARY KEY (id_livro)
-
 );
 -- ddl-end --
 ALTER TABLE public.livro OWNER TO postgres;
@@ -36,7 +35,6 @@ CREATE TABLE public.autor(
 	nm_autor varchar,
 	nm_citacao varchar,
 	CONSTRAINT autor_pk PRIMARY KEY (id_autor)
-
 );
 -- ddl-end --
 ALTER TABLE public.autor OWNER TO postgres;
@@ -51,7 +49,6 @@ CREATE TABLE public.editora(
 	estado varchar,
 	cidade varchar,
 	CONSTRAINT editora_pk PRIMARY KEY (id_editora)
-
 );
 -- ddl-end --
 ALTER TABLE public.editora OWNER TO postgres;
@@ -62,11 +59,10 @@ ALTER TABLE public.editora OWNER TO postgres;
 CREATE TABLE public.usuario(
 	id_usuario serial NOT NULL,
 	telefone varchar,
-	nu_idade smallint,
+	dt_nascimento date,
 	status boolean,
 	nm_usuario varchar,
 	CONSTRAINT usuario_pk PRIMARY KEY (id_usuario)
-
 );
 -- ddl-end --
 ALTER TABLE public.usuario OWNER TO postgres;
@@ -79,7 +75,6 @@ CREATE TABLE public.exemplar(
 	nu_quantidade integer,
 	id_livro integer NOT NULL,
 	CONSTRAINT exemplar_pk PRIMARY KEY (id_exemplar,id_livro)
-
 );
 -- ddl-end --
 ALTER TABLE public.exemplar OWNER TO postgres;
@@ -91,7 +86,6 @@ CREATE TABLE public.autoria(
 	id_autor integer NOT NULL,
 	id_livro integer NOT NULL,
 	CONSTRAINT autoria_pk PRIMARY KEY (id_autor,id_livro)
-
 );
 -- ddl-end --
 
@@ -132,7 +126,6 @@ CREATE TABLE public.aluguel(
 	dt_aluguel date NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	dt_entrega date,
 	CONSTRAINT aluguel_pk PRIMARY KEY (id_usuario,id_exemplar,id_livro,dt_aluguel)
-
 );
 -- ddl-end --
 
@@ -149,5 +142,3 @@ ALTER TABLE public.aluguel ADD CONSTRAINT exemplar_fk FOREIGN KEY (id_exemplar,i
 REFERENCES public.exemplar (id_exemplar,id_livro) MATCH FULL
 ON DELETE RESTRICT ON UPDATE CASCADE;
 -- ddl-end --
-
-
