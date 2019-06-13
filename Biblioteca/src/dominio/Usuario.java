@@ -5,6 +5,7 @@ import java.util.Date;
 public class Usuario {
     private int id_usuario;
     private String telefone;
+    private String cpf;
     private String nm_usuario;
     private Date dt_nascimento;
     private boolean status;
@@ -47,8 +48,17 @@ public class Usuario {
     public boolean isStatus() {
         return status;
     }
+    
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+    
+    public boolean getCpf() {
+        return status;
+    }
+    
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 }

@@ -58,6 +58,7 @@ ALTER TABLE public.editora OWNER TO postgres;
 -- DROP TABLE IF EXISTS public.usuario CASCADE;
 CREATE TABLE public.usuario(
 	id_usuario serial NOT NULL,
+	cpf varchar NOT NULL UNIQUE,
 	telefone varchar,
 	dt_nascimento date,
 	status boolean,
