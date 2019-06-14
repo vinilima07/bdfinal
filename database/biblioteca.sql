@@ -19,7 +19,7 @@
 CREATE TABLE public.livro(
 	id_livro serial NOT NULL,
 	nu_edicao smallint,
-	nm_titulo varchar,
+	nm_titulo varchar NOT NULL,
 	nm_genero varchar,
 	id_editora integer,
 	CONSTRAINT livro_pk PRIMARY KEY (id_livro)
@@ -32,7 +32,7 @@ ALTER TABLE public.livro OWNER TO postgres;
 -- DROP TABLE IF EXISTS public.autor CASCADE;
 CREATE TABLE public.autor(
 	id_autor serial NOT NULL,
-	nm_autor varchar,
+	nm_autor varchar NOT NULL,
 	nm_citacao varchar,
 	CONSTRAINT autor_pk PRIMARY KEY (id_autor)
 );
@@ -44,10 +44,10 @@ ALTER TABLE public.autor OWNER TO postgres;
 -- DROP TABLE IF EXISTS public.editora CASCADE;
 CREATE TABLE public.editora(
 	id_editora serial NOT NULL,
-	nm_editora varchar,
-	logradouro varchar,
-	estado varchar,
-	cidade varchar,
+	nm_editora varchar NOT NULL,
+	logradouro varchar NOT NULL,
+	estado varchar NOT NULL,
+	cidade varchar NOT NULL,
 	CONSTRAINT editora_pk PRIMARY KEY (id_editora)
 );
 -- ddl-end --
@@ -59,10 +59,10 @@ ALTER TABLE public.editora OWNER TO postgres;
 CREATE TABLE public.usuario(
 	id_usuario serial NOT NULL,
 	cpf varchar NOT NULL UNIQUE,
-	telefone varchar,
-	dt_nascimento date,
-	status boolean,
-	nm_usuario varchar,
+	telefone varchar NOT NULL,
+	dt_nascimento date NOT NULL,
+	status boolean NOT NULL DEFAULT FALSE,
+	nm_usuario varchar NOT NULL,
 	CONSTRAINT usuario_pk PRIMARY KEY (id_usuario)
 );
 -- ddl-end --
@@ -73,7 +73,6 @@ ALTER TABLE public.usuario OWNER TO postgres;
 -- DROP TABLE IF EXISTS public.exemplar CASCADE;
 CREATE TABLE public.exemplar(
 	id_exemplar serial NOT NULL,
-	nu_quantidade integer,
 	id_livro integer NOT NULL,
 	CONSTRAINT exemplar_pk PRIMARY KEY (id_exemplar,id_livro)
 );
