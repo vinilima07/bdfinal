@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.1" last-position="174,133" last-zoom="1"
+<dbmodel pgmodeler-ver="0.9.1" last-position="141,27" last-zoom="1"
 	 default-schema="public" default-owner="postgres">
 <database name="new_database" is-template="false" allow-conns="true">
 </database>
@@ -21,7 +21,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="nu_edicao">
 		<type name="smallint" length="0"/>
 	</column>
-	<column name="nm_titulo">
+	<column name="nm_titulo" not-null="true">
 		<type name="varchar" length="0"/>
 	</column>
 	<column name="nm_genero">
@@ -47,7 +47,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="id_autor" not-null="true">
 		<type name="serial" length="0"/>
 	</column>
-	<column name="nm_autor">
+	<column name="nm_autor" not-null="true">
 		<type name="varchar" length="0"/>
 	</column>
 	<column name="nm_citacao">
@@ -65,7 +65,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="id_editora" not-null="true">
 		<type name="serial" length="0"/>
 	</column>
-	<column name="nm_editora">
+	<column name="nm_editora" not-null="true">
 		<type name="varchar" length="0"/>
 	</column>
 	<column name="logradouro">
@@ -85,43 +85,46 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="usuario">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="900" y="640"/>
+	<position x="840" y="600"/>
 	<column name="id_usuario" not-null="true">
 		<type name="serial" length="0"/>
 	</column>
 	<column name="telefone">
 		<type name="varchar" length="0"/>
 	</column>
-	<column name="dt_nascimento">
+	<column name="dt_nascimento" not-null="true">
 		<type name="date" length="0"/>
 	</column>
-	<column name="status">
+	<column name="status" not-null="true" default-value="FALSE">
 		<type name="boolean" length="0"/>
 	</column>
-	<column name="nm_usuario">
+	<column name="nm_usuario" not-null="true">
+		<type name="varchar" length="0"/>
+	</column>
+	<column name="cpf" not-null="true">
 		<type name="varchar" length="0"/>
 	</column>
 	<constraint name="usuario_pk" type="pk-constr" table="public.usuario">
 		<columns names="id_usuario" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="cpf_unique" type="uq-constr" table="public.usuario">
+		<columns names="cpf" ref-type="src-columns"/>
 	</constraint>
 </table>
 
 <table name="exemplar">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="280" y="640"/>
+	<position x="200" y="540"/>
 	<column name="id_exemplar" not-null="true">
 		<type name="serial" length="0"/>
-	</column>
-	<column name="nu_quantidade">
-		<type name="integer" length="0"/>
 	</column>
 	<constraint name="exemplar_pk" type="pk-constr" table="public.exemplar">
 		<columns names="id_exemplar" ref-type="src-columns"/>
 	</constraint>
 
 	<customidxs object-type="column">
-		<object name="id_livro_livro" index="2"/>
+		<object name="id_livro_livro" index="1"/>
 	</customidxs>
 
 	<customidxs object-type="constraint">
