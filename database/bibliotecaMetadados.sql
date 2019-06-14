@@ -181,3 +181,112 @@ INSERT INTO public.autoria(
 	id_autor, id_livro)
 	VALUES (8, 8);
 
+--4545454544545454
+--EXEMPLAR
+INSERT INTO public.exemplar(
+	id_livro)
+	VALUES (5);
+
+INSERT INTO public.exemplar(
+	id_livro)
+	VALUES (5);
+
+INSERT INTO public.exemplar(
+	id_livro)
+	VALUES (3);
+
+INSERT INTO public.exemplar(
+	id_livro)
+	VALUES (3);
+
+INSERT INTO public.exemplar(
+	id_livro)
+	VALUES (2);
+
+INSERT INTO public.exemplar(
+	id_livro)
+	VALUES (1);
+
+INSERT INTO public.exemplar(
+	id_livro)
+	VALUES (1);
+
+INSERT INTO public.exemplar(
+	id_livro)
+	VALUES (1);
+
+INSERT INTO public.exemplar(
+	id_livro)
+	VALUES (2);
+
+INSERT INTO public.exemplar(
+	id_livro)
+	VALUES (2);
+
+INSERT INTO public.exemplar(
+	id_livro)
+	VALUES (3);
+
+INSERT INTO public.exemplar(
+	id_livro)
+	VALUES (7);
+
+INSERT INTO public.exemplar(
+	id_livro)
+	VALUES (7);
+
+INSERT INTO public.exemplar(
+	id_livro)
+	VALUES (6);
+
+INSERT INTO public.exemplar(
+	id_livro)
+	VALUES (6);
+
+INSERT INTO public.exemplar(
+	id_livro)
+	VALUES (4);
+
+INSERT INTO public.exemplar(
+	id_livro)
+	VALUES (4);
+
+INSERT INTO public.exemplar(
+	id_livro)
+	VALUES (4);
+
+INSERT INTO public.exemplar(
+	id_livro)
+	VALUES (3);
+
+INSERT INTO public.exemplar(
+	id_livro)
+	VALUES (2);
+
+INSERT INTO public.exemplar(
+	id_livro)
+	VALUES (2);
+
+INSERT INTO public.exemplar(
+	id_livro)
+	VALUES (4);
+
+INSERT INTO public.exemplar(
+	id_livro)
+	VALUES (4);
+
+INSERT INTO public.exemplar(
+	id_livro)
+	VALUES (4);
+
+INSERT INTO public.exemplar(
+	id_livro)
+	VALUES (4);
+
+INSERT INTO public.exemplar(
+	id_livro)
+	VALUES (5);
+
+INSERT INTO public.exemplar(
+	id_livro)
+	VALUES (6);
