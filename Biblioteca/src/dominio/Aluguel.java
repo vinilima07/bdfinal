@@ -8,8 +8,16 @@ public class Aluguel {
     private int id_livro;
     private Date dt_aluguel;
     private Date dt_entrega;
+
+    public Aluguel(){
+    }
     
-    public Aluguel() {
+    public Aluguel(int id_usuario, int id_exemplar, int id_livro, Date dt_aluguel, Date dt_entrega) {
+        this.id_usuario = id_usuario;
+        this.id_exemplar = id_exemplar;
+        this.id_livro = id_livro;
+        this.dt_aluguel = dt_aluguel;
+        this.dt_entrega = dt_entrega;
     }
 
     public int getId_usuario() {

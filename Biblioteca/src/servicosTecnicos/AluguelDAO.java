@@ -11,7 +11,9 @@ import java.sql.Statement;
 import dominio.Aluguel;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;  
+import java.util.ArrayList;
 import java.util.Date;  
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -60,6 +62,28 @@ public class AluguelDAO {
         }
         return alug;
     }
+    
+        public List<Aluguel> consultarAlugueis(int id_usuario){
+        String sql = "SELECT * FROM Aluguel WHERE id_usuario = '"+id_usuario+"' WHERE dt_entrega = NULL";
+        List<Aluguel> alugueis = new ArrayList<Aluguel>();
+        try{
+            Statement stm = con.getCon().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            stm.execute(sql);
+            ResultSet rs = stm.getResultSet();
+            
+            while(rs.next()){
+                alugueis.add(new Aluguel(rs.getInt("id_usuario"),
+                        rs.getInt("id_exemplar"), rs.getInt("id_livro"),
+                        rs.getDate("dt_aluguel"), rs.getDate("dt_aluguel")));
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            con.fechaConexao();
+        }
+        return alugueis;
+        }
 
     public String[] getAlgueis(){
         return null;
