@@ -9,6 +9,15 @@ public class Usuario {
     private String nm_usuario;
     private Date dt_nascimento;
     private boolean status;
+
+    public Usuario(int id_usuario, String telefone, String cpf, String nm_usuario, Date dt_nascimento, boolean status) {
+        this.id_usuario = id_usuario;
+        this.telefone = telefone;
+        this.cpf = cpf;
+        this.nm_usuario = nm_usuario;
+        this.dt_nascimento = dt_nascimento;
+        this.status = status;
+    }
     
     public Usuario() {
     }

@@ -63,7 +63,7 @@ public class AluguelDAO {
         return alug;
     }
     
-        public List<Aluguel> consultarAlugueis(int id_usuario){
+    public List<Aluguel> consultarAlugueis(int id_usuario){
         String sql = "SELECT * FROM Aluguel WHERE id_usuario = '"+id_usuario+"' WHERE dt_entrega = NULL";
         List<Aluguel> alugueis = new ArrayList<Aluguel>();
         try{

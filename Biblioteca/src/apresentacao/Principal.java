@@ -205,6 +205,12 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         TableDadosRE.setViewportView(DadosRE);
+        if (DadosRE.getColumnModel().getColumnCount() > 0) {
+            DadosRE.getColumnModel().getColumn(0).setHeaderValue("Nome");
+            DadosRE.getColumnModel().getColumn(1).setHeaderValue("CPF");
+            DadosRE.getColumnModel().getColumn(2).setHeaderValue("Telefone");
+            DadosRE.getColumnModel().getColumn(3).setHeaderValue("Status");
+        }
 
         LabelDadosRE1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         LabelDadosRE1.setText("Alugueis Pendentes");
@@ -214,22 +220,15 @@ public class Principal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "CPF", "Telefone", "Status"
+                "Livro", "Autor", "Data do Aluguel"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, true, false, true
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
         });
         TableDadosRE1.setViewportView(DadosRE1);
@@ -242,24 +241,23 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(RegistraEntregaLayout.createSequentialGroup()
-                        .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(LabelDadosRE1)
+                        .addGap(40, 607, Short.MAX_VALUE))
+                    .addGroup(RegistraEntregaLayout.createSequentialGroup()
+                        .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(RegistraEntregaLayout.createSequentialGroup()
                                 .addComponent(LabelCpfRE)
                                 .addGap(18, 18, 18)
                                 .addComponent(ListUsuariosRE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(TableDadosRE, javax.swing.GroupLayout.DEFAULT_SIZE, 715, Short.MAX_VALUE)
-                            .addGroup(RegistraEntregaLayout.createSequentialGroup()
-                                .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(LabelDadosRE)
-                                    .addComponent(LabelDadosRE1))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(40, 40, 40))
-                    .addGroup(RegistraEntregaLayout.createSequentialGroup()
-                        .addComponent(TableDadosRE1, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(ButtonRegistrarRE)
-                        .addGap(18, 18, 18)
-                        .addComponent(ButtonCancelarRE)
+                            .addComponent(TableDadosRE, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(LabelDadosRE)
+                                .addGroup(RegistraEntregaLayout.createSequentialGroup()
+                                    .addComponent(TableDadosRE1, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(ButtonRegistrarRE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(ButtonCancelarRE))))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         RegistraEntregaLayout.setVerticalGroup(
@@ -274,16 +272,15 @@ public class Principal extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(ListUsuariosRE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGap(18, 18, 18)
                 .addComponent(LabelDadosRE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TableDadosRE, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(14, 14, 14)
                 .addComponent(LabelDadosRE1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(RegistraEntregaLayout.createSequentialGroup()
-                        .addGap(0, 75, Short.MAX_VALUE)
+                        .addGap(0, 85, Short.MAX_VALUE)
                         .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(ButtonRegistrarRE)
                             .addComponent(ButtonCancelarRE)))
