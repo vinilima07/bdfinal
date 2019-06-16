@@ -10,6 +10,13 @@ public class Livro {
     public Livro() {
     }
 
+    public Livro(int id_livro, int nu_edicao, String nm_titulo, String nm_genero) {
+        this.id_livro = id_livro;
+        this.nu_edicao = nu_edicao;
+        this.nm_titulo = nm_titulo;
+        this.nm_genero = nm_genero;
+    }
+
     public int getId_livro() {
         return id_livro;
     }

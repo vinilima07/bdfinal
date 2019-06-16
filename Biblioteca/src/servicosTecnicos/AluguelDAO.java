@@ -9,6 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import dominio.Aluguel;
+import dominio.Exemplar;
+import dominio.Livro;
+import dominio.Usuario;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;  
 import java.util.ArrayList;
@@ -83,7 +86,20 @@ public class AluguelDAO {
             con.fechaConexao();
         }
         return alugueis;
+    }
+    
+    public void registrarAluguel(Usuario usuario, Exemplar exemplar){
+        String sql = "INSERT aluguel (id_usuario, id_exemplar, id_livro) VALUES("
+                +usuario.getId_usuario()+","+exemplar.getId_exemplar()+","+exemplar.getId_livro()+")";
+        try{
+            Statement stm = con.getCon().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            stm.execute(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            con.fechaConexao();
         }
+    }
 
     public String[] getAlgueis(){
         return null;
