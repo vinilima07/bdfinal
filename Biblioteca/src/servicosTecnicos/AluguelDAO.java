@@ -47,7 +47,7 @@ public class AluguelDAO {
                 while(rs.next()){  
                     Date date1;  
                     try {
-                        date1 = new SimpleDateFormat("dd/MM/yyyy").parse(rs.getString("id_exemplar"));
+                        date1 = new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString("id_exemplar"));
                         alug.setDt_aluguel(date1);
                     } catch (ParseException ex) {
                         Logger.getLogger(AluguelDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -90,7 +90,8 @@ public class AluguelDAO {
     
     public void registrarAluguel(Usuario usuario, Exemplar exemplar){
         String sql = "INSERT aluguel (id_usuario, id_exemplar, id_livro) VALUES("
-                +usuario.getId_usuario()+","+exemplar.getId_exemplar()+","+exemplar.getId_livro()+")";
+                +usuario.getId_usuario()+","+exemplar.getId_exemplar()
+                +","+exemplar.getId_livro()+")";
         try{
             Statement stm = con.getCon().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             stm.execute(sql);
@@ -99,13 +100,5 @@ public class AluguelDAO {
         } finally {
             con.fechaConexao();
         }
-    }
-
-    public String[] getAlgueis(){
-        return null;
-    }
-
-    public boolean inserirAluguel(Aluguel novoAluguel){
-        return false;
     }
 }
