@@ -38,7 +38,8 @@ public class Principal extends javax.swing.JFrame {
         ListLivrosRA = new java.awt.Choice();
         TabelDadosUsuarioRA = new javax.swing.JScrollPane();
         DadosRA = new javax.swing.JTable();
-        ValueCpfRA = new javax.swing.JTextField();
+        ValueCpfRA = new javax.swing.JFormattedTextField();
+        ButtonOkRA = new javax.swing.JButton();
         RegistraEntrega = new javax.swing.JPanel();
         ButtonRegistrarRE = new javax.swing.JButton();
         ButtonCancelarRE = new javax.swing.JButton();
@@ -49,7 +50,8 @@ public class Principal extends javax.swing.JFrame {
         LabelDadosRE1 = new javax.swing.JLabel();
         TableDadosRE1 = new javax.swing.JScrollPane();
         DadosRE1 = new javax.swing.JTable();
-        ValueCpfRE = new javax.swing.JTextField();
+        ValueCpfRE = new javax.swing.JFormattedTextField();
+        ButtonOkRE = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Biblioteca");
@@ -115,12 +117,9 @@ public class Principal extends javax.swing.JFrame {
         TabelDadosUsuarioRA.setViewportView(DadosRA);
 
         ValueCpfRA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        ValueCpfRA.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        ValueCpfRA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ValueCpfRAActionPerformed(evt);
-            }
-        });
+
+        ButtonOkRA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        ButtonOkRA.setText("OK");
 
         javax.swing.GroupLayout RegistraAluguelLayout = new javax.swing.GroupLayout(RegistraAluguel);
         RegistraAluguel.setLayout(RegistraAluguelLayout);
@@ -130,7 +129,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addGroup(RegistraAluguelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegistraAluguelLayout.createSequentialGroup()
-                        .addComponent(TabelDadosUsuarioRA, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
+                        .addComponent(TabelDadosUsuarioRA, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
                         .addGap(15, 15, 15)
                         .addComponent(ButtonRegistrarRA)
                         .addGap(18, 18, 18)
@@ -145,16 +144,20 @@ public class Principal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(RegistraAluguelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ListLivrosRA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ValueCpfRA))))
+                            .addGroup(RegistraAluguelLayout.createSequentialGroup()
+                                .addComponent(ValueCpfRA)
+                                .addGap(18, 18, 18)
+                                .addComponent(ButtonOkRA)))))
                 .addGap(40, 40, 40))
         );
         RegistraAluguelLayout.setVerticalGroup(
             RegistraAluguelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegistraAluguelLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(24, 24, 24)
                 .addGroup(RegistraAluguelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabelCpfRA)
-                    .addComponent(ValueCpfRA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ValueCpfRA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ButtonOkRA))
                 .addGap(18, 18, 18)
                 .addGroup(RegistraAluguelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(LabelLivroRA, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -167,7 +170,7 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(ButtonRegistrarRA)
                         .addComponent(ButtonCancelarRA))
                     .addComponent(TabelDadosUsuarioRA, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addContainerGap(194, Short.MAX_VALUE))
         );
 
         Janela.addTab("Registrar Alugel", RegistraAluguel);
@@ -248,7 +251,9 @@ public class Principal extends javax.swing.JFrame {
         TableDadosRE1.setViewportView(DadosRE1);
 
         ValueCpfRE.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        ValueCpfRE.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+
+        ButtonOkRE.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        ButtonOkRE.setText("OK");
 
         javax.swing.GroupLayout RegistraEntregaLayout = new javax.swing.GroupLayout(RegistraEntrega);
         RegistraEntrega.setLayout(RegistraEntregaLayout);
@@ -266,8 +271,10 @@ public class Principal extends javax.swing.JFrame {
                             .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(RegistraEntregaLayout.createSequentialGroup()
                                     .addComponent(LabelCpfRE)
-                                    .addGap(30, 30, 30)
-                                    .addComponent(ValueCpfRE))
+                                    .addGap(20, 20, 20)
+                                    .addComponent(ValueCpfRE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(ButtonOkRE))
                                 .addComponent(TableDadosRE, javax.swing.GroupLayout.DEFAULT_SIZE, 722, Short.MAX_VALUE)
                                 .addGroup(RegistraEntregaLayout.createSequentialGroup()
                                     .addComponent(TableDadosRE1, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -280,10 +287,12 @@ public class Principal extends javax.swing.JFrame {
         RegistraEntregaLayout.setVerticalGroup(
             RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegistraEntregaLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(22, 22, 22)
                 .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabelCpfRE)
-                    .addComponent(ValueCpfRE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(ValueCpfRE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ButtonOkRE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(LabelDadosRE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -296,7 +305,7 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(ButtonRegistrarRE)
                         .addComponent(ButtonCancelarRE)))
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
 
         Janela.addTab("Registrar Entrega", RegistraEntrega);
@@ -315,26 +324,21 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void ButtonCancelarREActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCancelarREActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtonCancelarREActionPerformed
+
     private void ButtonRegistrarREActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonRegistrarREActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ButtonRegistrarREActionPerformed
-
-    private void ButtonRegistrarRAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonRegistrarRAActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonRegistrarRAActionPerformed
 
     private void ListLivrosRAPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_ListLivrosRAPropertyChange
         // TODO add your handling code here:
     }//GEN-LAST:event_ListLivrosRAPropertyChange
 
-    private void ButtonCancelarREActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCancelarREActionPerformed
+    private void ButtonRegistrarRAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonRegistrarRAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonCancelarREActionPerformed
-
-    private void ValueCpfRAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValueCpfRAActionPerformed
-        // TODO add your handling code here:
-        System.out.println("digitou");
-    }//GEN-LAST:event_ValueCpfRAActionPerformed
+    }//GEN-LAST:event_ButtonRegistrarRAActionPerformed
 
     /**
      * @param args the command line arguments
@@ -374,6 +378,8 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonCancelarRA;
     private javax.swing.JButton ButtonCancelarRE;
+    private javax.swing.JButton ButtonOkRA;
+    private javax.swing.JButton ButtonOkRE;
     private javax.swing.JButton ButtonRegistrarRA;
     private javax.swing.JButton ButtonRegistrarRE;
     private javax.swing.JTable DadosRA;
@@ -392,7 +398,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane TabelDadosUsuarioRA;
     private javax.swing.JScrollPane TableDadosRE;
     private javax.swing.JScrollPane TableDadosRE1;
-    private javax.swing.JTextField ValueCpfRA;
-    private javax.swing.JTextField ValueCpfRE;
+    private javax.swing.JFormattedTextField ValueCpfRA;
+    private javax.swing.JFormattedTextField ValueCpfRE;
     // End of variables declaration//GEN-END:variables
 }
