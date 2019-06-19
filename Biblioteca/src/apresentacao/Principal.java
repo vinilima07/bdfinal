@@ -36,11 +36,10 @@ public class Principal extends javax.swing.JFrame {
         LabelLivroRA = new javax.swing.JLabel();
         LabelDadosRA = new javax.swing.JLabel();
         ListLivrosRA = new java.awt.Choice();
-        ListUsuariosRA = new java.awt.Choice();
         TabelDadosUsuarioRA = new javax.swing.JScrollPane();
         DadosRA = new javax.swing.JTable();
+        ValueCpfRA = new javax.swing.JTextField();
         RegistraEntrega = new javax.swing.JPanel();
-        ListUsuariosRE = new java.awt.Choice();
         ButtonRegistrarRE = new javax.swing.JButton();
         ButtonCancelarRE = new javax.swing.JButton();
         LabelCpfRE = new javax.swing.JLabel();
@@ -50,12 +49,13 @@ public class Principal extends javax.swing.JFrame {
         LabelDadosRE1 = new javax.swing.JLabel();
         TableDadosRE1 = new javax.swing.JScrollPane();
         DadosRE1 = new javax.swing.JTable();
+        ValueCpfRE = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Biblioteca");
-        setMaximumSize(new java.awt.Dimension(1200, 500));
-        setMinimumSize(new java.awt.Dimension(800, 300));
-        setPreferredSize(new java.awt.Dimension(800, 300));
+        setMaximumSize(new java.awt.Dimension(1200, 800));
+        setMinimumSize(new java.awt.Dimension(800, 400));
+        setPreferredSize(new java.awt.Dimension(800, 400));
 
         Janela.setMaximumSize(getMaximumSize());
         Janela.setMinimumSize(getMinimumSize());
@@ -83,8 +83,11 @@ public class Principal extends javax.swing.JFrame {
         LabelDadosRA.setText("Dados");
 
         ListLivrosRA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        ListUsuariosRA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        ListLivrosRA.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                ListLivrosRAPropertyChange(evt);
+            }
+        });
 
         DadosRA.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -111,6 +114,14 @@ public class Principal extends javax.swing.JFrame {
         });
         TabelDadosUsuarioRA.setViewportView(DadosRA);
 
+        ValueCpfRA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        ValueCpfRA.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        ValueCpfRA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ValueCpfRAActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout RegistraAluguelLayout = new javax.swing.GroupLayout(RegistraAluguel);
         RegistraAluguel.setLayout(RegistraAluguelLayout);
         RegistraAluguelLayout.setHorizontalGroup(
@@ -134,17 +145,17 @@ public class Principal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(RegistraAluguelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ListLivrosRA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ListUsuariosRA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(ValueCpfRA))))
                 .addGap(40, 40, 40))
         );
         RegistraAluguelLayout.setVerticalGroup(
             RegistraAluguelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegistraAluguelLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(RegistraAluguelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ListUsuariosRA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabelCpfRA))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(21, 21, 21)
+                .addGroup(RegistraAluguelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LabelCpfRA)
+                    .addComponent(ValueCpfRA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(RegistraAluguelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(LabelLivroRA, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ListLivrosRA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -156,15 +167,13 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(ButtonRegistrarRA)
                         .addComponent(ButtonCancelarRA))
                     .addComponent(TabelDadosUsuarioRA, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(172, Short.MAX_VALUE))
         );
 
         Janela.addTab("Registrar Alugel", RegistraAluguel);
 
         RegistraEntrega.setMaximumSize(Janela.getMaximumSize());
         RegistraEntrega.setMinimumSize(Janela.getMinimumSize());
-
-        ListUsuariosRE.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         ButtonRegistrarRE.setText("Registrar");
         ButtonRegistrarRE.addActionListener(new java.awt.event.ActionListener() {
@@ -174,6 +183,11 @@ public class Principal extends javax.swing.JFrame {
         });
 
         ButtonCancelarRE.setText("Cancelar");
+        ButtonCancelarRE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonCancelarREActionPerformed(evt);
+            }
+        });
 
         LabelCpfRE.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         LabelCpfRE.setText("CPF");
@@ -233,6 +247,9 @@ public class Principal extends javax.swing.JFrame {
         });
         TableDadosRE1.setViewportView(DadosRE1);
 
+        ValueCpfRE.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        ValueCpfRE.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+
         javax.swing.GroupLayout RegistraEntregaLayout = new javax.swing.GroupLayout(RegistraEntrega);
         RegistraEntrega.setLayout(RegistraEntregaLayout);
         RegistraEntregaLayout.setHorizontalGroup(
@@ -244,34 +261,30 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(LabelDadosRE1)
                         .addGap(40, 607, Short.MAX_VALUE))
                     .addGroup(RegistraEntregaLayout.createSequentialGroup()
-                        .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(RegistraEntregaLayout.createSequentialGroup()
-                                .addComponent(LabelCpfRE)
-                                .addGap(18, 18, 18)
-                                .addComponent(ListUsuariosRE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(TableDadosRE, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(LabelDadosRE)
+                        .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LabelDadosRE)
+                            .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(RegistraEntregaLayout.createSequentialGroup()
+                                    .addComponent(LabelCpfRE)
+                                    .addGap(30, 30, 30)
+                                    .addComponent(ValueCpfRE))
+                                .addComponent(TableDadosRE, javax.swing.GroupLayout.DEFAULT_SIZE, 722, Short.MAX_VALUE)
                                 .addGroup(RegistraEntregaLayout.createSequentialGroup()
                                     .addComponent(TableDadosRE1, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(ButtonRegistrarRE)
-                                    .addGap(18, 18, 18)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(ButtonCancelarRE))))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         RegistraEntregaLayout.setVerticalGroup(
             RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegistraEntregaLayout.createSequentialGroup()
-                .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(RegistraEntregaLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(LabelCpfRE)
-                        .addGap(14, 14, 14))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegistraEntregaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(ListUsuariosRE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGap(23, 23, 23)
+                .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LabelCpfRE)
+                    .addComponent(ValueCpfRE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(LabelDadosRE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TableDadosRE, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -279,13 +292,11 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(LabelDadosRE1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(RegistraEntregaLayout.createSequentialGroup()
-                        .addGap(0, 85, Short.MAX_VALUE)
-                        .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ButtonRegistrarRE)
-                            .addComponent(ButtonCancelarRE)))
-                    .addComponent(TableDadosRE1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(TableDadosRE1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(ButtonRegistrarRE)
+                        .addComponent(ButtonCancelarRE)))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         Janela.addTab("Registrar Entrega", RegistraEntrega);
@@ -311,6 +322,19 @@ public class Principal extends javax.swing.JFrame {
     private void ButtonRegistrarRAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonRegistrarRAActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ButtonRegistrarRAActionPerformed
+
+    private void ListLivrosRAPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_ListLivrosRAPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ListLivrosRAPropertyChange
+
+    private void ButtonCancelarREActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCancelarREActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtonCancelarREActionPerformed
+
+    private void ValueCpfRAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValueCpfRAActionPerformed
+        // TODO add your handling code here:
+        System.out.println("digitou");
+    }//GEN-LAST:event_ValueCpfRAActionPerformed
 
     /**
      * @param args the command line arguments
@@ -363,12 +387,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel LabelDadosRE1;
     private javax.swing.JLabel LabelLivroRA;
     private java.awt.Choice ListLivrosRA;
-    private java.awt.Choice ListUsuariosRA;
-    private java.awt.Choice ListUsuariosRE;
     private javax.swing.JPanel RegistraAluguel;
     private javax.swing.JPanel RegistraEntrega;
     private javax.swing.JScrollPane TabelDadosUsuarioRA;
     private javax.swing.JScrollPane TableDadosRE;
     private javax.swing.JScrollPane TableDadosRE1;
+    private javax.swing.JTextField ValueCpfRA;
+    private javax.swing.JTextField ValueCpfRE;
     // End of variables declaration//GEN-END:variables
 }
