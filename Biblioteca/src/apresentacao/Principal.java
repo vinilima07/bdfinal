@@ -115,8 +115,8 @@ public class Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Biblioteca");
         setMaximumSize(new java.awt.Dimension(1200, 500));
-        setMinimumSize(new java.awt.Dimension(800, 300));
-        setPreferredSize(new java.awt.Dimension(800, 300));
+        setMinimumSize(new java.awt.Dimension(800, 400));
+        setPreferredSize(new java.awt.Dimension(800, 400));
 
         Janela.setMaximumSize(getMaximumSize());
         Janela.setMinimumSize(getMinimumSize());
@@ -228,7 +228,7 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(ButtonRegistrarRA)
                         .addComponent(ButtonCancelarRA))
                     .addComponent(TabelDadosUsuarioRA, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(276, Short.MAX_VALUE))
+                .addContainerGap(176, Short.MAX_VALUE))
         );
 
         ListUsuariosRA.getAccessibleContext().setAccessibleName("");
@@ -336,14 +336,15 @@ public class Principal extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(ListUsuariosRE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(TableDadosRE, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(RegistraEntregaLayout.createSequentialGroup()
                                 .addComponent(LabelDadosRE)
-                                .addGroup(RegistraEntregaLayout.createSequentialGroup()
-                                    .addComponent(TableDadosRE1, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(ButtonRegistrarRE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(ButtonCancelarRE))))
+                                .addGap(93, 93, 93))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, RegistraEntregaLayout.createSequentialGroup()
+                                .addComponent(TableDadosRE1, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(ButtonRegistrarRE)
+                                .addGap(18, 18, 18)
+                                .addComponent(ButtonCancelarRE)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         RegistraEntregaLayout.setVerticalGroup(
@@ -365,13 +366,11 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(LabelDadosRE1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(RegistraEntregaLayout.createSequentialGroup()
-                        .addGap(0, 257, Short.MAX_VALUE)
-                        .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ButtonRegistrarRE)
-                            .addComponent(ButtonCancelarRE)))
-                    .addComponent(TableDadosRE1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(ButtonRegistrarRE)
+                        .addComponent(ButtonCancelarRE))
+                    .addComponent(TableDadosRE1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(71, 71, 71))
         );
 
         Janela.addTab("Registrar Entrega", RegistraEntrega);

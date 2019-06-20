@@ -21,8 +21,8 @@ public class EntregaDAO {
     public void registrarEntrega(Aluguel aluguel){
         SimpleDateFormat dtf = new SimpleDateFormat("yyyy-MM-dd");
 	LocalDateTime agora = LocalDateTime.now();
-        String sql1 = "UPDATE aluguel SET dt_entrega = "+agora+
-            " WHERE id_usuario = '"+aluguel.getId_usuario().getId_usuario()+"' AND id_exemplar = '"+aluguel.getId_exemplar().getId_exemplar()+
+        String sql1 = "UPDATE aluguel SET dt_entrega = '"+agora+
+            "' WHERE id_usuario = '"+aluguel.getId_usuario().getId_usuario()+"' AND id_exemplar = '"+aluguel.getId_exemplar().getId_exemplar()+
             "' AND id_livro = '"+aluguel.getId_livro().getId_livro()+"' AND dt_aluguel = '"+aluguel.getDt_aluguel()+"'";
         
         String sql2 = "UPDATE exemplar SET status = TRUE WHERE"

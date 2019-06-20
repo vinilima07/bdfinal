@@ -8,10 +8,10 @@
       <Dimension value="[1200, 500]"/>
     </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[800, 300]"/>
+      <Dimension value="[800, 400]"/>
     </Property>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[800, 300]"/>
+      <Dimension value="[800, 400]"/>
     </Property>
   </Properties>
   <SyntheticProperties>
@@ -134,7 +134,7 @@
                           </Group>
                           <Component id="TabelDadosUsuarioRA" alignment="1" min="-2" pref="47" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="276" max="32767" attributes="0"/>
+                      <EmptySpace pref="176" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -288,15 +288,16 @@
                                       <Component id="ListUsuariosRE" max="32767" attributes="0"/>
                                   </Group>
                                   <Component id="TableDadosRE" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="LabelDadosRE" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="TableDadosRE1" min="-2" pref="533" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="ButtonRegistrarRE" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="ButtonCancelarRE" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="LabelDadosRE" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="TableDadosRE1" min="-2" pref="533" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="ButtonRegistrarRE" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="ButtonCancelarRE" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -327,16 +328,13 @@
                       <Component id="LabelDadosRE1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="0" pref="257" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="ButtonRegistrarRE" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="ButtonCancelarRE" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="ButtonRegistrarRE" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="ButtonCancelarRE" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="TableDadosRE1" pref="0" max="32767" attributes="0"/>
+                          <Component id="TableDadosRE1" min="-2" pref="120" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
