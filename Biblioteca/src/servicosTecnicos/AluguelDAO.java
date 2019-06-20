@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servicosTecnicos;
 
 import java.sql.ResultSet;
@@ -20,54 +15,16 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author olive
- */
 public class AluguelDAO {
     private Conexao con;
 
     public AluguelDAO(){
         con = new Conexao();
     }
-
-    public Aluguel consultaAlguel( int id_usuario, int id_exemplar, int id_livro, int dt_aluguel){
-        String sql = "SELECT * FROM Aluguel WHERE id_usuario = '"+id_usuario+"AND  id_exemplar = '"+id_exemplar+"'"
-                + "AND  id_livro = '"+id_livro+"AND  dt_aluguel = '"+dt_aluguel+"'";
-        Aluguel alug = null;
-        try{
-            Statement stm = con.getCon().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            stm.execute(sql);
-            ResultSet rs = stm.getResultSet();
-            rs.last();
-            int i = rs.getRow();
-            alug = new Aluguel();
-            if (rs.getRow() > 0){
-                rs.beforeFirst();
-                while(rs.next()){  
-                    Date date1;  
-                    try {
-                        date1 = new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString("id_exemplar"));
-                        alug.setDt_aluguel(date1);
-                    } catch (ParseException ex) {
-                        Logger.getLogger(AluguelDAO.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    //alug.(Date.valueOf(rs.getString("dt_aluguel")));
-                    alug.setId_exemplar(Integer.valueOf(rs.getString("id_exemplar")));
-                    alug.setId_livro(Integer.valueOf(rs.getString("id_livro")));
-                    alug.setId_usuario(Integer.valueOf(rs.getString("id_usuario")));
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            con.fechaConexao();
-        }
-        return alug;
-    }
     
     public List<Aluguel> consultarAlugueis(int id_usuario){
-        String sql = "SELECT * FROM Aluguel WHERE id_usuario = '"+id_usuario+"' WHERE dt_entrega = NULL";
+        String sql = "SELECT * FROM aluguel NATURAL JOIN exemplar NATURAL JOIN livro"
+                +" WHERE id_usuario = "+id_usuario+" AND dt_entrega IS NULL";
         List<Aluguel> alugueis = new ArrayList<Aluguel>();
         try{
             Statement stm = con.getCon().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -75,9 +32,12 @@ public class AluguelDAO {
             ResultSet rs = stm.getResultSet();
             
             while(rs.next()){
-                alugueis.add(new Aluguel(rs.getInt("id_usuario"),
-                        rs.getInt("id_exemplar"), rs.getInt("id_livro"),
-                        rs.getDate("dt_aluguel"), rs.getDate("dt_aluguel")));
+                Usuario usuario = new Usuario();
+                Livro livro = new Livro(rs.getInt("id_livro"), rs.getInt("nu_edicao"), rs.getString("nm_titulo"), rs.getString("nm_genero"));
+                Exemplar exemplar = new Exemplar(rs.getInt("id_exemplar"), livro);
+                Aluguel aluguel = new Aluguel(usuario, exemplar, livro, rs.getDate("dt_aluguel"), null);
+                
+                alugueis.add(aluguel);
             }
             
         } catch (SQLException e) {
@@ -89,12 +49,15 @@ public class AluguelDAO {
     }
     
     public void registrarAluguel(Usuario usuario, Exemplar exemplar){
-        String sql = "INSERT aluguel (id_usuario, id_exemplar, id_livro) VALUES("
-                +usuario.getId_usuario()+","+exemplar.getId_exemplar()
-                +","+exemplar.getId_livro()+")";
+        String sql1 = "INSERT INTO aluguel (id_usuario, id_exemplar, id_livro) VALUES ("
+            +usuario.getId_usuario()+","+exemplar.getId_exemplar()+","+exemplar.getId_livro().getId_livro()+")";
+        
+        String sql2 = "UPDATE exemplar SET status = FALSE"
+                +" WHERE id_exemplar = "+exemplar.getId_exemplar()+" AND id_livro = "+exemplar.getId_livro().getId_livro();
         try{
             Statement stm = con.getCon().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            stm.execute(sql);
+            stm.execute(sql1);
+            stm.execute(sql2);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

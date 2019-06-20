@@ -3,16 +3,16 @@ package dominio;
 import java.util.Date;
 
 public class Aluguel {
-    private int id_usuario;
-    private int id_exemplar;
-    private int id_livro;
+    private Usuario id_usuario;
+    private Exemplar id_exemplar;
+    private Livro id_livro;
     private Date dt_aluguel;
     private Date dt_entrega;
 
     public Aluguel(){
     }
     
-    public Aluguel(int id_usuario, int id_exemplar, int id_livro, Date dt_aluguel, Date dt_entrega) {
+    public Aluguel(Usuario id_usuario, Exemplar id_exemplar, Livro id_livro, Date dt_aluguel, Date dt_entrega) {
         this.id_usuario = id_usuario;
         this.id_exemplar = id_exemplar;
         this.id_livro = id_livro;
@@ -20,27 +20,27 @@ public class Aluguel {
         this.dt_entrega = dt_entrega;
     }
 
-    public int getId_usuario() {
+    public Usuario getId_usuario() {
         return id_usuario;
     }
 
-    public void setId_usuario(int id_usuario) {
+    public void setId_usuario(Usuario id_usuario) {
         this.id_usuario = id_usuario;
     }
 
-    public int getId_exemplar() {
+    public Exemplar getId_exemplar() {
         return id_exemplar;
     }
 
-    public void setId_exemplar(int id_exemplar) {
+    public void setId_exemplar(Exemplar id_exemplar) {
         this.id_exemplar = id_exemplar;
     }
 
-    public int getId_livro() {
+    public Livro getId_livro() {
         return id_livro;
     }
 
-    public void setId_livro(int id_livro) {
+    public void setId_livro(Livro id_livro) {
         this.id_livro = id_livro;
     }
 

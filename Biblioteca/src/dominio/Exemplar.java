@@ -2,10 +2,15 @@ package dominio;
 
 public class Exemplar {
     private int id_exemplar;
-    private int nu_quantidade;
+    private boolean status;
     private Livro id_livro;
+
+    public Exemplar(){
+    }
     
-    public Exemplar() {
+    public Exemplar(int id_exemplar, Livro id_livro) {
+        this.id_exemplar = id_exemplar;
+        this.id_livro = id_livro;
     }
 
     public int getId_exemplar() {
@@ -16,12 +21,12 @@ public class Exemplar {
         this.id_exemplar = id_exemplar;
     }
 
-    public int getNu_quantidade() {
-        return nu_quantidade;
+    public boolean isStatus() {
+        return status;
     }
 
-    public void setNu_quantidade(int nu_quantidade) {
-        this.nu_quantidade = nu_quantidade;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public Livro getId_livro() {

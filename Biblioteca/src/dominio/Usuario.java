@@ -37,6 +37,14 @@ public class Usuario {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+    
+    public String getCpf() {
+        return this.cpf;
+    }
+    
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
 
     public String getNm_usuario() {
         return nm_usuario;
@@ -58,16 +66,7 @@ public class Usuario {
         return status;
     }
     
-
     public void setStatus(boolean status) {
         this.status = status;
-    }
-    
-    public boolean getCpf() {
-        return status;
-    }
-    
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
     }
 }

@@ -1,28 +1,83 @@
 package apresentacao;
 
+import dominio.Aluguel;
+import dominio.Autor;
+import dominio.Exemplar;
 import dominio.Usuario;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import servicosTecnicos.AluguelDAO;
+import servicosTecnicos.AutoriaDAO;
+import servicosTecnicos.EntregaDAO;
+import servicosTecnicos.ExemplarDAO;
+import servicosTecnicos.LivroDAO;
 import servicosTecnicos.UsuarioDAO;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author vinicius
- */
 public class Principal extends javax.swing.JFrame {
-    Usuario usRA;
-    Usuario usRE;
-    /**
-     * Creates new form Principal
-     */
+    private List<Exemplar> exemplaresDisp;
+    private List<Usuario> usuarios;
+    private List<Aluguel> alugueis;
+    
     public Principal() {
         initComponents();
-
+        
+        initFields();
+    }
+    
+    public void carregaLivros() {
+        AutoriaDAO autoriadao;
+        ExemplarDAO exemplardao = new ExemplarDAO();
+        exemplaresDisp = exemplardao.listarExemplares();
+        
+        ListLivrosRA.removeAll();
+        for(Exemplar exemplar : exemplaresDisp) {
+            autoriadao = new AutoriaDAO();
+            Autor autor = autoriadao.consultaAutor(exemplar.getId_livro().getId_livro());
+            ListLivrosRA.addItem(exemplar.getId_livro().getNm_titulo()+", "+autor.getNm_autor()+", exemplar "+exemplar.getId_exemplar());
+        }
+    }
+    
+    public void carregaUsuarios() {
+        UsuarioDAO usuariodao = new UsuarioDAO();
+        usuarios = usuariodao.listarUsuarios();
+          
+        ListUsuariosRA.removeAll();
+        ListUsuariosRE.removeAll();
+        for(Usuario usuario : usuarios) {
+            ListUsuariosRA.addItem(""+usuario.getCpf());
+            ListUsuariosRE.addItem(""+usuario.getCpf());
+        }
+    }
+    
+    public void carregaAlugueis(int index) {
+        AluguelDAO alugueldao = new AluguelDAO();
+        
+        Usuario usuario = usuarios.get(index);
+        
+        alugueis = alugueldao.consultarAlugueis(usuario.getId_usuario());
+        DefaultTableModel model = (DefaultTableModel)DadosRE1.getModel();
+        DadosRE1.removeAll();
+        model.setRowCount(0);
+        for(Aluguel aluguel : alugueis) {
+            model.addRow(new Object[]{aluguel.getId_livro().getNm_titulo(), aluguel.getId_exemplar().getId_exemplar(), aluguel.getDt_aluguel()});
+        }
+    }
+    
+    public void initFields() { 
+        carregaLivros();
+        carregaUsuarios();
+        
+        Usuario usuario = usuarios.get(0);
+        
+        DefaultTableModel model1 = (DefaultTableModel)DadosRA.getModel();
+        model1.removeRow(0);
+        model1.addRow(new Object[]{usuario.getNm_usuario(), usuario.getCpf(), usuario.getTelefone(), usuario.isStatus()});
+        
+        DefaultTableModel model2 = (DefaultTableModel)DadosRE.getModel();
+        model2.removeRow(0);
+        model2.addRow(new Object[]{usuario.getNm_usuario(), usuario.getCpf(), usuario.getTelefone(), usuario.isStatus()});
+        
+        carregaAlugueis(0);
     }
 
     /**
@@ -42,11 +97,11 @@ public class Principal extends javax.swing.JFrame {
         LabelLivroRA = new javax.swing.JLabel();
         LabelDadosRA = new javax.swing.JLabel();
         ListLivrosRA = new java.awt.Choice();
+        ListUsuariosRA = new java.awt.Choice();
         TabelDadosUsuarioRA = new javax.swing.JScrollPane();
         DadosRA = new javax.swing.JTable();
-        ValueCpfRA = new javax.swing.JFormattedTextField();
-        ButtonOkRA = new javax.swing.JButton();
         RegistraEntrega = new javax.swing.JPanel();
+        ListUsuariosRE = new java.awt.Choice();
         ButtonRegistrarRE = new javax.swing.JButton();
         ButtonCancelarRE = new javax.swing.JButton();
         LabelCpfRE = new javax.swing.JLabel();
@@ -54,16 +109,14 @@ public class Principal extends javax.swing.JFrame {
         TableDadosRE = new javax.swing.JScrollPane();
         DadosRE = new javax.swing.JTable();
         LabelDadosRE1 = new javax.swing.JLabel();
-        TableAlugueisRE = new javax.swing.JScrollPane();
-        AlugueisRE = new javax.swing.JTable();
-        ValueCpfRE = new javax.swing.JFormattedTextField();
-        ButtonOkRE = new javax.swing.JButton();
+        TableDadosRE1 = new javax.swing.JScrollPane();
+        DadosRE1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Biblioteca");
-        setMaximumSize(new java.awt.Dimension(1200, 800));
-        setMinimumSize(new java.awt.Dimension(800, 400));
-        setPreferredSize(new java.awt.Dimension(800, 400));
+        setMaximumSize(new java.awt.Dimension(1200, 500));
+        setMinimumSize(new java.awt.Dimension(800, 300));
+        setPreferredSize(new java.awt.Dimension(800, 300));
 
         Janela.setMaximumSize(getMaximumSize());
         Janela.setMinimumSize(getMinimumSize());
@@ -71,6 +124,7 @@ public class Principal extends javax.swing.JFrame {
 
         RegistraAluguel.setMaximumSize(Janela.getMaximumSize());
         RegistraAluguel.setMinimumSize(Janela.getMinimumSize());
+        RegistraAluguel.setPreferredSize(new java.awt.Dimension(795, 500));
 
         ButtonRegistrarRA.setText("Registrar");
         ButtonRegistrarRA.addActionListener(new java.awt.event.ActionListener() {
@@ -80,6 +134,11 @@ public class Principal extends javax.swing.JFrame {
         });
 
         ButtonCancelarRA.setText("Cancelar");
+        ButtonCancelarRA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonCancelarRAActionPerformed(evt);
+            }
+        });
 
         LabelCpfRA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         LabelCpfRA.setText("CPF");
@@ -88,18 +147,20 @@ public class Principal extends javax.swing.JFrame {
         LabelLivroRA.setText("Livro");
 
         LabelDadosRA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        LabelDadosRA.setText("Dados do Usuário");
+        LabelDadosRA.setText("Dados");
 
         ListLivrosRA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        ListLivrosRA.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                ListLivrosRAPropertyChange(evt);
+
+        ListUsuariosRA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        ListUsuariosRA.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ListUsuariosRAItemStateChanged(evt);
             }
         });
 
         DadosRA.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null}
             },
             new String [] {
                 "Nome", "CPF", "Telefone", "Status"
@@ -122,16 +183,6 @@ public class Principal extends javax.swing.JFrame {
         });
         TabelDadosUsuarioRA.setViewportView(DadosRA);
 
-        ValueCpfRA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        ButtonOkRA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        ButtonOkRA.setText("OK");
-        ButtonOkRA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonOkRAActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout RegistraAluguelLayout = new javax.swing.GroupLayout(RegistraAluguel);
         RegistraAluguel.setLayout(RegistraAluguelLayout);
         RegistraAluguelLayout.setHorizontalGroup(
@@ -140,7 +191,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addGroup(RegistraAluguelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegistraAluguelLayout.createSequentialGroup()
-                        .addComponent(TabelDadosUsuarioRA, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
+                        .addComponent(TabelDadosUsuarioRA, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
                         .addGap(15, 15, 15)
                         .addComponent(ButtonRegistrarRA)
                         .addGap(18, 18, 18)
@@ -155,21 +206,17 @@ public class Principal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(RegistraAluguelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ListLivrosRA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(RegistraAluguelLayout.createSequentialGroup()
-                                .addComponent(ValueCpfRA)
-                                .addGap(18, 18, 18)
-                                .addComponent(ButtonOkRA)))))
+                            .addComponent(ListUsuariosRA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(40, 40, 40))
         );
         RegistraAluguelLayout.setVerticalGroup(
             RegistraAluguelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegistraAluguelLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(RegistraAluguelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LabelCpfRA)
-                    .addComponent(ValueCpfRA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ButtonOkRA))
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
+                .addGroup(RegistraAluguelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ListUsuariosRA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelCpfRA))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(RegistraAluguelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(LabelLivroRA, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ListLivrosRA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -181,13 +228,23 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(ButtonRegistrarRA)
                         .addComponent(ButtonCancelarRA))
                     .addComponent(TabelDadosUsuarioRA, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(194, Short.MAX_VALUE))
+                .addContainerGap(276, Short.MAX_VALUE))
         );
+
+        ListUsuariosRA.getAccessibleContext().setAccessibleName("");
 
         Janela.addTab("Registrar Alugel", RegistraAluguel);
 
         RegistraEntrega.setMaximumSize(Janela.getMaximumSize());
-        RegistraEntrega.setMinimumSize(Janela.getMinimumSize());
+        RegistraEntrega.setMinimumSize(new java.awt.Dimension(800, 300));
+        RegistraEntrega.setPreferredSize(new java.awt.Dimension(800, 500));
+
+        ListUsuariosRE.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        ListUsuariosRE.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ListUsuariosREItemStateChanged(evt);
+            }
+        });
 
         ButtonRegistrarRE.setText("Registrar");
         ButtonRegistrarRE.addActionListener(new java.awt.event.ActionListener() {
@@ -211,7 +268,7 @@ public class Principal extends javax.swing.JFrame {
 
         DadosRE.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null}
             },
             new String [] {
                 "Nome", "CPF", "Telefone", "Status"
@@ -221,7 +278,7 @@ public class Principal extends javax.swing.JFrame {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, false, true
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -233,43 +290,34 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         TableDadosRE.setViewportView(DadosRE);
-        if (DadosRE.getColumnModel().getColumnCount() > 0) {
-            DadosRE.getColumnModel().getColumn(0).setHeaderValue("Nome");
-            DadosRE.getColumnModel().getColumn(1).setHeaderValue("CPF");
-            DadosRE.getColumnModel().getColumn(2).setHeaderValue("Telefone");
-            DadosRE.getColumnModel().getColumn(3).setHeaderValue("Status");
-        }
 
         LabelDadosRE1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         LabelDadosRE1.setText("Alugueis Pendentes");
 
-        AlugueisRE.setModel(new javax.swing.table.DefaultTableModel(
+        DadosRE1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Livro", "Autor", "Data do Aluguel"
+                "Livro", "Exemplar", "Data do Aluguel"
             }
         ) {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
-        });
-        TableAlugueisRE.setViewportView(AlugueisRE);
 
-        ValueCpfRE.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        ButtonOkRE.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        ButtonOkRE.setText("OK");
-        ButtonOkRE.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonOkREActionPerformed(evt);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
+        TableDadosRE1.setViewportView(DadosRE1);
 
         javax.swing.GroupLayout RegistraEntregaLayout = new javax.swing.GroupLayout(RegistraEntrega);
         RegistraEntrega.setLayout(RegistraEntregaLayout);
@@ -282,34 +330,34 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(LabelDadosRE1)
                         .addGap(40, 607, Short.MAX_VALUE))
                     .addGroup(RegistraEntregaLayout.createSequentialGroup()
-                        .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LabelDadosRE)
-                            .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(RegistraEntregaLayout.createSequentialGroup()
+                                .addComponent(LabelCpfRE)
+                                .addGap(18, 18, 18)
+                                .addComponent(ListUsuariosRE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(TableDadosRE, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(LabelDadosRE)
                                 .addGroup(RegistraEntregaLayout.createSequentialGroup()
-                                    .addComponent(LabelCpfRE)
-                                    .addGap(20, 20, 20)
-                                    .addComponent(ValueCpfRE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(ButtonOkRE))
-                                .addComponent(TableDadosRE, javax.swing.GroupLayout.DEFAULT_SIZE, 722, Short.MAX_VALUE)
-                                .addGroup(RegistraEntregaLayout.createSequentialGroup()
-                                    .addComponent(TableAlugueisRE, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TableDadosRE1, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(ButtonRegistrarRE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGap(18, 18, 18)
                                     .addComponent(ButtonCancelarRE))))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         RegistraEntregaLayout.setVerticalGroup(
             RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegistraEntregaLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LabelCpfRE)
-                    .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(ValueCpfRE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(ButtonOkRE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(RegistraEntregaLayout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(LabelCpfRE)
+                        .addGap(14, 14, 14))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegistraEntregaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(ListUsuariosRE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(LabelDadosRE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TableDadosRE, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -317,11 +365,13 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(LabelDadosRE1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(TableAlugueisRE, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(ButtonRegistrarRE)
-                        .addComponent(ButtonCancelarRE)))
-                .addContainerGap(98, Short.MAX_VALUE))
+                    .addGroup(RegistraEntregaLayout.createSequentialGroup()
+                        .addGap(0, 257, Short.MAX_VALUE)
+                        .addGroup(RegistraEntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ButtonRegistrarRE)
+                            .addComponent(ButtonCancelarRE)))
+                    .addComponent(TableDadosRE1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         Janela.addTab("Registrar Entrega", RegistraEntrega);
@@ -340,44 +390,69 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ButtonCancelarREActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCancelarREActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonCancelarREActionPerformed
-
     private void ButtonRegistrarREActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonRegistrarREActionPerformed
-        // TODO add your handling code here:
+        EntregaDAO entregadao = new EntregaDAO();
+        int usuarioIndex = ListUsuariosRA.getSelectedIndex();
+        int aluguelIndex = DadosRE1.getSelectedRow();
+        if (aluguelIndex >= 0) {
+            Aluguel aluguel = alugueis.get(aluguelIndex);
+            aluguel.setId_usuario(usuarios.get(usuarioIndex));
+            entregadao.registrarEntrega(aluguel);
+            javax.swing.JOptionPane.showMessageDialog(this, "Entrega registrada com sucesso.", "Mensagem do sistema.", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            carregaAlugueis(usuarioIndex);
+            carregaLivros();
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Selecione um exemplar...", "Mensagem do sistema.", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_ButtonRegistrarREActionPerformed
 
-    private void ListLivrosRAPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_ListLivrosRAPropertyChange
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ListLivrosRAPropertyChange
-
     private void ButtonRegistrarRAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonRegistrarRAActionPerformed
-        // TODO add your handling code here:
+        AluguelDAO alugueldao = new AluguelDAO();
+        int usuarioIndex = ListUsuariosRA.getSelectedIndex();
+        int exemplarIndex = ListLivrosRA.getSelectedIndex();
+        if(usuarios.get(usuarioIndex).isStatus()) {
+            alugueldao.registrarAluguel(usuarios.get(usuarioIndex), exemplaresDisp.get(exemplarIndex));
+            exemplaresDisp.remove(exemplarIndex);
+            ListLivrosRA.remove(exemplarIndex);
+            javax.swing.JOptionPane.showMessageDialog(this, "Aluguel registrado com sucesso.", "Mensagem do sistema.", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            carregaAlugueis(ListUsuariosRE.getSelectedIndex());
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Usuário bloqueado.", "Mensagem do sistema.", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_ButtonRegistrarRAActionPerformed
 
-    private void ButtonOkRAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonOkRAActionPerformed
-        // TODO add your handling code here:
-        UsuarioDAO udao = new UsuarioDAO();
-        this.usRA = udao.consultarUsuario(Integer.parseInt(this.ValueCpfRA.getText()));
-        DefaultTableModel model = (DefaultTableModel) DadosRA.getModel();
-        model.addRow(new Object[]{
-            usRA.getId_usuario(), usRA.getCpf(),
-            usRA.getTelefone(), usRA.isStatus()});
-    }//GEN-LAST:event_ButtonOkRAActionPerformed
+    private void ListUsuariosRAItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ListUsuariosRAItemStateChanged
+        Usuario usuario = usuarios.get(ListUsuariosRA.getSelectedIndex());
+        DefaultTableModel model = (DefaultTableModel)DadosRA.getModel();
+        model.removeRow(0);
+        model.addRow(new Object[]{usuario.getNm_usuario(), usuario.getCpf(), usuario.getTelefone(), usuario.isStatus()});
+    }//GEN-LAST:event_ListUsuariosRAItemStateChanged
 
-    private void ButtonOkREActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonOkREActionPerformed
-        // TODO add your handling code here:
-        UsuarioDAO udao = new UsuarioDAO();
-        this.usRE = udao.consultarUsuario(Integer.parseInt(this.ValueCpfRE.getText()));
-        DefaultTableModel model = (DefaultTableModel) DadosRE.getModel();
-        model.addRow(new Object[]{
-            usRE.getId_usuario(), usRE.getCpf(),
-            usRE.getTelefone(), usRE.isStatus()});
-    }//GEN-LAST:event_ButtonOkREActionPerformed
+    private void ButtonCancelarRAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCancelarRAActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_ButtonCancelarRAActionPerformed
 
+    private void ButtonCancelarREActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCancelarREActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_ButtonCancelarREActionPerformed
+
+    private void ListUsuariosREItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ListUsuariosREItemStateChanged
+        AluguelDAO alugueldao = new AluguelDAO();
+        Usuario usuario = usuarios.get(ListUsuariosRE.getSelectedIndex());
+        DefaultTableModel model = (DefaultTableModel)DadosRE.getModel();
+        model.removeRow(0);
+        model.addRow(new Object[]{usuario.getNm_usuario(), usuario.getCpf(), usuario.getTelefone(), usuario.isStatus()});
+        alugueis = alugueldao.consultarAlugueis(usuario.getId_usuario());
+        DefaultTableModel model1 = (DefaultTableModel)DadosRE1.getModel();
+        DadosRE1.removeAll();
+        model1.setRowCount(0);
+        for(Aluguel aluguel : alugueis) {
+            model1.addRow(new Object[]{aluguel.getId_livro().getNm_titulo(), aluguel.getId_exemplar().getId_exemplar(), aluguel.getDt_aluguel()});
+        }
+    }//GEN-LAST:event_ListUsuariosREItemStateChanged
+  
     /**
-     * @param args the command line arguments
+     * @param args the command line arguments.
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -412,15 +487,13 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable AlugueisRE;
     private javax.swing.JButton ButtonCancelarRA;
     private javax.swing.JButton ButtonCancelarRE;
-    private javax.swing.JButton ButtonOkRA;
-    private javax.swing.JButton ButtonOkRE;
     private javax.swing.JButton ButtonRegistrarRA;
     private javax.swing.JButton ButtonRegistrarRE;
     private javax.swing.JTable DadosRA;
     private javax.swing.JTable DadosRE;
+    private javax.swing.JTable DadosRE1;
     private javax.swing.JTabbedPane Janela;
     private javax.swing.JLabel LabelCpfRA;
     private javax.swing.JLabel LabelCpfRE;
@@ -429,12 +502,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel LabelDadosRE1;
     private javax.swing.JLabel LabelLivroRA;
     private java.awt.Choice ListLivrosRA;
+    private java.awt.Choice ListUsuariosRA;
+    private java.awt.Choice ListUsuariosRE;
     private javax.swing.JPanel RegistraAluguel;
     private javax.swing.JPanel RegistraEntrega;
     private javax.swing.JScrollPane TabelDadosUsuarioRA;
-    private javax.swing.JScrollPane TableAlugueisRE;
     private javax.swing.JScrollPane TableDadosRE;
-    private javax.swing.JFormattedTextField ValueCpfRA;
-    private javax.swing.JFormattedTextField ValueCpfRE;
+    private javax.swing.JScrollPane TableDadosRE1;
     // End of variables declaration//GEN-END:variables
 }

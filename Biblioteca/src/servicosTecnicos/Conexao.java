@@ -12,7 +12,7 @@ public class Conexao {
     public Conexao(){
         try {
             Class.forName( "org.postgresql.Driver" );
-            con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/biblioteca","postgres","123");
+            con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/biblioteca", "sistema", "123");
         } 
         catch (SQLException e) {
             System.out.println("Erro na conexao");

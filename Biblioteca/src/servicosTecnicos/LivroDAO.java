@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servicosTecnicos;
 
 import dominio.Aluguel;
@@ -14,12 +9,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Vinicius
- */
 public class LivroDAO {
-    Conexao con;
+    private Conexao con;
     
     public LivroDAO(){
         con = new Conexao();
@@ -34,8 +25,7 @@ public class LivroDAO {
             ResultSet rs = stm.getResultSet();
             
             while(rs.next()){
-                livros.add(new Livro(rs.getInt("id_livro"), rs.getInt("nu_editora"),rs.getString("nm_titulo"),
-                rs.getString("nm_genero")));
+                livros.add(new Livro(rs.getInt("id_livro"), rs.getInt("nu_edicao"), rs.getString("nm_titulo"), rs.getString("nm_genero")));
             }
             
         } catch (SQLException e) {

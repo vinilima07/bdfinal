@@ -8,6 +8,12 @@ public class Autor {
     public Autor() {
     }
 
+    public Autor(int id_autor, String nm_autor, String nm_citacao) {
+        this.id_autor = id_autor;
+        this.nm_autor = nm_autor;
+        this.nm_citacao = nm_citacao;
+    }
+
     public int getId_autor() {
         return id_autor;
     }
