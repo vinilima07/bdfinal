@@ -73,7 +73,7 @@ INSERT INTO public.editora(
 --usuarios
 INSERT INTO public.usuario(
 	cpf, telefone, dt_nascimento, nm_usuario)
-	VALUES ('123456790', '3191534567', '1993-06-23', 'Morpheu de Lima');
+	VALUES ('12345679045', '3191534567', '1993-06-23', 'Morpheu de Lima');
 
 INSERT INTO public.usuario(
 	cpf, telefone, dt_nascimento, nm_usuario)

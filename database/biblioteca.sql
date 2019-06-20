@@ -122,3 +122,6 @@ ALTER TABLE public.aluguel ADD CONSTRAINT exemplar_fk FOREIGN KEY (id_exemplar,i
 REFERENCES public.exemplar (id_exemplar,id_livro) MATCH FULL
 ON DELETE RESTRICT ON UPDATE CASCADE;
 
+-- CREATE USER to manipulate database system.
+DROP ROLE IF EXISTS sistema;
+CREATE USER sistema WITH PASSWORD '123' IN GROUP postgres;
